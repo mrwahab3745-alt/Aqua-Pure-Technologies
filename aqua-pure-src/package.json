@@ -1,10 +1,13 @@
 {
+  "name": "aqua-pure-technology-website",
+  "version": "1.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
-    "dev": "cd aqua-pure-src && next dev",
-    "build": "cd aqua-pure-src && next build",
-    "start": "cd aqua-pure-src && next start",
-    "lint": "cd aqua-pure-src && next lint"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "^16.2.10",
@@ -24,3 +27,4 @@
     "typescript": "^6.0.3"
   }
 }
+
