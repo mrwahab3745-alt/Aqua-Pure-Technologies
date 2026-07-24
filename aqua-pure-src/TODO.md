@@ -27,4 +27,3 @@
 - [x] Update Services page (colors, hover, scroll animations)
 - [x] Update loading.tsx (colors)
 - [x] Build initiated - verify no errors
-

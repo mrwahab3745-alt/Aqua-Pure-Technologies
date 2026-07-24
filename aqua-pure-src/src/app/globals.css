@@ -1,7 +1,7 @@
 /* tailwindcss v4 theme directive */
 @import "tailwindcss";
 
-@theme {
+theme{
   --color-surface: #E8F3FD;
   --color-navy: #0f172a;
   --color-primary: #007BFF;
