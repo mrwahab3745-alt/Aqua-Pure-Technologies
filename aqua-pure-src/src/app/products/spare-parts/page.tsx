@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 // Keep this dataset structure swappable — once Wahab's keyword research
 // surfaces high-volume search terms, map them directly onto `modelName` and
@@ -94,6 +94,10 @@ export default function SparePartsPage() {
       ? PARTS_DATA
       : PARTS_DATA.filter((part) => part.category === activeCategory);
 
+  const handleCategoryClick = useCallback((category: Category) => {
+    setActiveCategory(category);
+  }, []);
+
   return (
     <main className="bg-white px-6 py-16 md:py-24">
       <div className="mx-auto max-w-7xl">
@@ -108,19 +112,19 @@ export default function SparePartsPage() {
         <div className="sticky top-[73px] z-40 -mx-6 mt-8 border-b border-navy/10 bg-white/95 px-6 py-4 backdrop-blur-md">
           <div className="flex flex-wrap gap-2">
             {CATEGORIES.map((category) => (
-              <button
-                key={category}
-                type="button"
-                onClick={() => setActiveCategory(category)}
-                aria-pressed={activeCategory === category}
-                className={`min-h-12 rounded-lg px-4 text-sm font-semibold transition-colors ${
-                  activeCategory === category
-                    ? "bg-navy text-white"
-                    : "bg-surface text-navy/60 hover:bg-navy/10"
-                }`}
-              >
-                {category}
-              </button>
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => handleCategoryClick(category)}
+                  aria-pressed={activeCategory === category}
+                  className={`min-h-12 rounded-lg px-4 text-sm font-semibold transition-colors ${
+                    activeCategory === category
+                      ? "bg-navy text-white"
+                      : "bg-surface text-navy/60 hover:bg-navy/10"
+                  }`}
+                >
+                  {category}
+                </button>
             ))}
           </div>
         </div>

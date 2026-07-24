@@ -4,8 +4,8 @@ import ProductCategoriesHub from "./components/sections/ProductCategoriesHub";
 // import CaseStudies from "./components/sections/CaseStudies";
 import AMCPanel from "./components/sections/AMCPanel";
 import IndustriesServed from "./components/sections/IndustriesServed";
-import SegmentedFAQ from "./components/sections/SegmentedFAQ";
 import FinalCTA from "./components/sections/FinalCTA";
+import DynamicSegmentedFAQ from "./components/sections/DynamicSegmentedFAQ";
 
 export default function HomePage() {
   return (
@@ -15,7 +15,7 @@ export default function HomePage() {
       <ProductCategoriesHub />
       <IndustriesServed />
       <AMCPanel />
-      <SegmentedFAQ />
+      <DynamicSegmentedFAQ />
       <FinalCTA />
     </main>
   );

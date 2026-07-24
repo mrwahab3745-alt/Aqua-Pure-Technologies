@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import dynamic from "next/dynamic";
 import Navbar from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
-import WhatsAppButton from "./components/layout/Whatsappicon";
+import DynamicWhatsApp from "./components/layout/DynamicWhatsApp";
 import "./globals.css";
+
+const Footer = dynamic(() => import("./components/layout/Footer"), {
+  loading: () => (
+    <div className="h-64 animate-pulse bg-navy/10" />
+  ),
+});
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -48,7 +54,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
-        <WhatsAppButton />
+        <DynamicWhatsApp />
       </body>
     </html>
   );

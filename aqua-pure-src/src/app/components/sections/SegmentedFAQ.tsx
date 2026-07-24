@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 type FaqItem = { id: string; question: string; answer: string };
 type TabKey = "domestic" | "industrial";
@@ -107,14 +107,14 @@ export default function SegmentedFAQ() {
 
   const visibleFaqs = activeTab === "domestic" ? DOMESTIC_FAQS : INDUSTRIAL_FAQS;
 
-  function handleTabChange(tab: TabKey) {
+  const handleTabChange = useCallback((tab: TabKey) => {
     setActiveTab(tab);
     setOpenFaqId(null);
-  }
+  }, []);
 
-  function handleToggle(id: string) {
+  const handleToggle = useCallback((id: string) => {
     setOpenFaqId((currentId) => (currentId === id ? null : id));
-  }
+  }, []);
 
   return (
     <section className="bg-white px-6 py-16 md:py-24">

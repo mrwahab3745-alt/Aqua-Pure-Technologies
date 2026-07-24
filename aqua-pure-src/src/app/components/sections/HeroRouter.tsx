@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Link from "next/link";
 
 type CardId = "domestic" | "business" | "parts";
@@ -40,6 +40,14 @@ const CARDS: {
 export default function HeroRouter() {
   const [businessOpen, setBusinessOpen] = useState(false);
 
+  const toggleBusiness = useCallback(() => {
+    setBusinessOpen((open) => !open);
+  }, []);
+
+  const openBusiness = useCallback(() => {
+    setBusinessOpen(true);
+  }, []);
+
   return (
     <section className="bg-navy px-6 py-16 md:py-24">
       <div className="mx-auto max-w-7xl">
@@ -64,8 +72,8 @@ export default function HeroRouter() {
                 >
                   <button
                     type="button"
-                    onClick={() => setBusinessOpen((open) => !open)}
-                    onMouseEnter={() => setBusinessOpen(true)}
+                    onClick={toggleBusiness}
+                    onMouseEnter={openBusiness}
                     aria-expanded={businessOpen}
                     className="min-h-12 text-left"
                   >

@@ -1,12 +1,14 @@
-# TODO - Fix Next.js Turbopack Build Errors
+# TBT Optimization Progress
 
-## Completed Steps
-- [x] Read all relevant files
-- [x] Plan approved by user
+## Tasks
 
-## Implementation Steps
-- [x] **Fix 1:** Edit `contact/page.tsx` — Remove `"use client"` and unused `dynamic` import
-- [x] **Fix 2:** Create `DynamicSpecAndQuote.tsx` wrapper Client Component
-- [x] **Fix 3:** Edit `products/industrial/page.tsx` — Use new wrapper, remove `dynamic` import
-- [x] **Verify:** All changes applied correctly
+- [x] Plan approved
+- [x] 1. layout.tsx — Dynamic import Footer & WhatsAppButton
+- [x] 2. page.tsx — Dynamic import SegmentedFAQ
+- [x] 3. SegmentedFAQ.tsx — Add useCallback wrappers
+- [x] 4. HeroRouter.tsx — Add useCallback wrappers
+- [x] 5. SparePartsPage.tsx — Add useCallback wrappers
+- [x] 6. loading.tsx — Remove unused React import
+- [x] 7. Build test (`npm run build`) ✅ Success
+- [ ] 8. Push to main
 
