@@ -1,7 +1,8 @@
 /* tailwindcss v4 theme directive */
+/* stylelint-disable at-rule-no-unknown */
 @import "tailwindcss";
 
-theme{
+@theme {
   --color-surface: #E8F3FD;
   --color-navy: #0f172a;
   --color-primary: #007BFF;
