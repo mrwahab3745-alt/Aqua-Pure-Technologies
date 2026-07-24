@@ -1,17 +1,29 @@
+/* tailwindcss v4 theme directive */
 @import "tailwindcss";
 
 @theme {
-  --color-surface: #f8fafc;
+  --color-surface: #E8F3FD;
   --color-navy: #0f172a;
+  --color-primary: #007BFF;
+  --color-heading: #1A1A1A;
+  --color-body: #4F4F4F;
 }
 
 html {
   color-scheme: light;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: var(--color-surface);
+  background-color: #FFFFFF;
   color: var(--color-navy);
 }
+
+/* Custom selection color */
+::selection {
+  background-color: #007BFF;
+  color: #ffffff;
+}
+

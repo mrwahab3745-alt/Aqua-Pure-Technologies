@@ -38,7 +38,7 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Left — Logo */}
         <a href="/" className="text-lg font-extrabold tracking-tight text-navy">
-          Aqua<span className="text-cyan">Pure</span>
+          Aqua<span className="text-primary">Pure</span>
         </a>
 
         {/* Center — desktop links only */}
@@ -51,15 +51,17 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className={`relative py-2 transition-all duration-200 ${
+                className={`group relative py-2 transition-all duration-200 ${
                   isActive
-                    ? "text-cyan font-bold opacity-100"
-                    : "text-navy opacity-85 hover:text-cyan hover:opacity-100"
+                    ? "text-primary font-bold opacity-100"
+                    : "text-navy opacity-85 hover:text-primary hover:opacity-100"
                 }`}
               >
                 <span className="block pr-1">{link.label}</span>
+                {/* Animated bottom-border that slides in on hover */}
+                <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
                 {isActive && (
-                  <span className="absolute bottom-0 left-0 h-[2px] w-full bg-cyan transition-all duration-300 animate-fade-in" />
+                  <span className="absolute bottom-0 left-0 h-[2px] w-full bg-primary transition-all duration-300" />
                 )}
               </a>
             );
@@ -69,7 +71,7 @@ export default function Navbar() {
         {/* Right — micro CTA, desktop only */}
         <a
           href="https://wa.me/92XXXXXXXXXX"
-          className="hidden min-h-12 items-center rounded-lg bg-cyan px-4 text-sm font-bold text-navy shadow-sm transition-colors duration-200 hover:bg-green-400 md:inline-flex"
+          className="hidden min-h-12 items-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-4 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30 md:inline-flex"
         >
           WhatsApp Us
         </a>
@@ -78,7 +80,7 @@ export default function Navbar() {
         <label
           htmlFor="mobile-nav-toggle"
           aria-label="Toggle menu"
-          className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-lg border border-navy/10 md:hidden hover:underline"
+          className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-lg border border-navy/10 md:hidden hover:bg-primary/10 hover:border-primary/30 hover:underline"
         >
           <span aria-hidden className="text-lg leading-none text-navy">☰</span>
         </label>
@@ -95,22 +97,22 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className={`relative flex min-h-12 items-center rounded-lg px-3 text-sm font-medium transition-colors ${
+                className={`relative flex min-h-12 items-center rounded-lg px-3 text-sm font-medium transition-all duration-200 ${
                   isActive
-                    ? "text-cyan font-bold"
-                    : "text-navy/70 hover:bg-surface hover:text-navy"
+                    ? "text-primary font-bold bg-primary/5"
+                    : "text-navy/70 hover:bg-primary/5 hover:text-primary"
                 }`}
               >
                 <span className="block w-full pr-1">{link.label}</span>
                 {isActive && (
-                  <span className="absolute bottom-1 left-3 h-[2px] w-[calc(100%-1.5rem)] bg-cyan transition-all duration-300 animate-fade-in" />
+                  <span className="absolute bottom-1 left-3 h-[2px] w-[calc(100%-1.5rem)] bg-primary transition-all duration-300" />
                 )}
               </a>
             );
           })}
           <a
             href="https://wa.me/92XXXXXXXXXX"
-            className="mt-2 flex min-h-12 items-center justify-center rounded-lg bg-cyan px-4 text-center text-sm font-bold text-navy shadow-sm transition-colors duration-200 hover:bg-cyan/90"
+            className="mt-2 flex min-h-12 items-center justify-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-4 text-center text-sm font-bold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
           >
             WhatsApp Us
           </a>

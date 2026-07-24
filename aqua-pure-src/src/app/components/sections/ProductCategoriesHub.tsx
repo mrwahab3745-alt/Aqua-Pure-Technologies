@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ScrollReveal from "../ui/ScrollReveal";
 
 const CATEGORIES = [
   {
@@ -31,33 +32,40 @@ export default function ProductCategoriesHub() {
   return (
     <section className="bg-white px-6 py-16 md:py-24">
       <div className="mx-auto max-w-7xl">
-        <p className="text-xs font-semibold uppercase tracking-widest text-cyan">
-          What we build
-        </p>
-        <h2 className="mt-2 text-3xl font-extrabold text-navy sm:text-4xl">
-          Every water problem, matched to the right system.
-        </h2>
+        <ScrollReveal direction="up" delay={0.1}>
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+            What we build
+          </p>
+        </ScrollReveal>
+        <ScrollReveal direction="up" delay={0.2}>
+          <h2 className="mt-2 text-3xl font-extrabold text-navy sm:text-4xl">
+            Every water problem, matched to the right system.
+          </h2>
+        </ScrollReveal>
 
-        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {CATEGORIES.map((cat) => (
-            <Link
-              key={cat.href}
-              href={cat.href}
-              className="group flex flex-col justify-between rounded-2xl border border-navy/10 bg-surface p-6 transition-colors hover:border-cyan hover:bg-white"
-            >
-              <div>
-                <span className="text-xs font-semibold uppercase tracking-widest text-navy/50">
-                  {cat.eyebrow}
+        <ScrollReveal direction="up" delay={0.3}>
+          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {CATEGORIES.map((cat, i) => (
+              <Link
+                key={cat.href}
+                href={cat.href}
+                className="group flex flex-col justify-between rounded-2xl border border-navy/10 bg-surface p-6 transition-all duration-300 hover:border-primary hover:bg-white hover:scale-105 hover:shadow-card-hover"
+                style={{ animationDelay: `${i * 100}ms` }}
+              >
+                <div>
+                  <span className="text-xs font-semibold uppercase tracking-widest text-navy/50">
+                    {cat.eyebrow}
+                  </span>
+                  <h3 className="mt-2 text-lg font-bold text-navy">{cat.title}</h3>
+                  <p className="mt-2 text-sm text-navy/60">{cat.description}</p>
+                </div>
+                <span className="mt-5 text-sm font-semibold text-primary group-hover:underline">
+                  View details →
                 </span>
-                <h3 className="mt-2 text-lg font-bold text-navy">{cat.title}</h3>
-                <p className="mt-2 text-sm text-navy/60">{cat.description}</p>
-              </div>
-              <span className="mt-5 text-sm font-semibold text-cyan group-hover:underline">
-                View details →
-              </span>
-            </Link>
-          ))}
-        </div>
+              </Link>
+            ))}
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

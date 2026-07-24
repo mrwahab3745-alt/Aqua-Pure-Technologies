@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import ScrollReveal from "../ui/ScrollReveal";
 
 type FaqItem = { id: string; question: string; answer: string };
 type TabKey = "domestic" | "industrial";
@@ -75,7 +76,7 @@ function AccordionItem({
       <button
         type="button"
         onClick={onToggle}
-        className="flex w-full cursor-pointer items-center justify-between py-4 text-left text-sm font-semibold text-navy transition-all duration-300 ease-in-out hover:text-cyan"
+        className="flex w-full cursor-pointer items-center justify-between py-4 text-left text-sm font-semibold text-navy transition-all duration-300 ease-in-out hover:text-primary"
         aria-expanded={isOpen}
         aria-controls={answerId}
       >
@@ -119,37 +120,43 @@ export default function SegmentedFAQ() {
   return (
     <section className="bg-white px-6 py-16 md:py-24">
       <div className="mx-auto max-w-3xl">
-        <p className="text-xs font-semibold uppercase tracking-widest text-cyan">
-          Common questions
-        </p>
-        <h2 className="mt-2 text-3xl font-extrabold text-navy sm:text-4xl">
-          Answers, by audience.
-        </h2>
+        <ScrollReveal direction="up" delay={0.1}>
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+            Common questions
+          </p>
+        </ScrollReveal>
+        <ScrollReveal direction="up" delay={0.2}>
+          <h2 className="mt-2 text-3xl font-extrabold text-navy sm:text-4xl">
+            Answers, by audience.
+          </h2>
+        </ScrollReveal>
 
-        <div className="mt-8 flex gap-2 border-b border-navy/10">
-          <button
-            type="button"
-            onClick={() => handleTabChange("domestic")}
-            className={`cursor-pointer border-b-2 px-4 py-3 text-sm font-semibold transition-all duration-300 ease-in-out ${
-              activeTab === "domestic"
-                ? "border-cyan text-navy"
-                : "border-transparent text-navy/40"
-            }`}
-          >
-            Domestic Safety FAQs
-          </button>
-          <button
-            type="button"
-            onClick={() => handleTabChange("industrial")}
-            className={`cursor-pointer border-b-2 px-4 py-3 text-sm font-semibold transition-all duration-300 ease-in-out ${
-              activeTab === "industrial"
-                ? "border-cyan text-navy"
-                : "border-transparent text-navy/40"
-            }`}
-          >
-            Industrial Compliance FAQs
-          </button>
-        </div>
+        <ScrollReveal direction="up" delay={0.3}>
+          <div className="mt-8 flex gap-2 border-b border-navy/10">
+            <button
+              type="button"
+              onClick={() => handleTabChange("domestic")}
+              className={`cursor-pointer border-b-2 px-4 py-3 text-sm font-semibold transition-all duration-300 ease-in-out ${
+                activeTab === "domestic"
+                  ? "border-primary text-navy"
+                  : "border-transparent text-navy/40"
+              }`}
+            >
+              Domestic Safety FAQs
+            </button>
+            <button
+              type="button"
+              onClick={() => handleTabChange("industrial")}
+              className={`cursor-pointer border-b-2 px-4 py-3 text-sm font-semibold transition-all duration-300 ease-in-out ${
+                activeTab === "industrial"
+                  ? "border-primary text-navy"
+                  : "border-transparent text-navy/40"
+              }`}
+            >
+              Industrial Compliance FAQs
+            </button>
+          </div>
+        </ScrollReveal>
 
         <div className="mt-2">
           {visibleFaqs.map((item) => (

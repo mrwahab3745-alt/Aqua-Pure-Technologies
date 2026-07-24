@@ -1,3 +1,5 @@
+import ScrollReveal from "../ui/ScrollReveal";
+
 const PRODUCT_LINKS = [
   { href: "/products/domestic", label: "Domestic RO Plants" },
   { href: "/products/commercial", label: "Commercial RO Plants" },
@@ -22,7 +24,7 @@ export default function Footer() {
         {/* Column 1 — micro-bio */}
         <div>
           <p className="text-lg font-extrabold tracking-tight">
-            Aqua<span className="text-cyan">Pure</span>
+            Aqua<span className="text-primary">Pure</span>
           </p>
           <p className="mt-3 text-sm text-white/60">
             RO plant installation, maintenance, and genuine spare parts —
@@ -36,13 +38,13 @@ export default function Footer() {
 
         {/* Column 2 — Product navigation matrix */}
         <div>
-          <h3 className="text-xs font-semibold uppercase tracking-widest text-cyan">
+          <h3 className="text-xs font-semibold uppercase tracking-widest text-primary">
             Products
           </h3>
           <ul className="mt-4 space-y-2">
             {PRODUCT_LINKS.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="text-sm text-white/60 hover:text-white">
+                <a href={link.href} className="text-sm text-white/60 transition-all duration-200 hover:text-primary hover:translate-x-1 inline-block">
                   {link.label}
                 </a>
               </li>
@@ -52,13 +54,13 @@ export default function Footer() {
 
         {/* Column 3 — Regional hubs (local SEO anchors) */}
         <div>
-          <h3 className="text-xs font-semibold uppercase tracking-widest text-cyan">
+          <h3 className="text-xs font-semibold uppercase tracking-widest text-primary">
             Regional Hubs
           </h3>
           <ul className="mt-4 space-y-2">
             {REGIONAL_HUBS.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="text-sm text-white/60 hover:text-white">
+                <a href={link.href} className="text-sm text-white/60 transition-all duration-200 hover:text-primary hover:translate-x-1 inline-block">
                   RO Plant Services — {link.label}
                 </a>
               </li>
@@ -68,7 +70,7 @@ export default function Footer() {
 
         {/* Column 4 — Technical helpdesk / GBP-matched contact data */}
         <div>
-          <h3 className="text-xs font-semibold uppercase tracking-widest text-cyan">
+          <h3 className="text-xs font-semibold uppercase tracking-widest text-primary">
             Technical Helpdesk
           </h3>
           {/*
@@ -81,11 +83,11 @@ export default function Footer() {
           <address className="mt-4 not-italic text-sm text-white/60 space-y-4">
             [Street Address], [Area], [City], Pakistan
             <br />
-            <a href="tel:+92XXXXXXXXXX" className="py-2 px-3 inline-block hover:text-white">
+            <a href="tel:+92XXXXXXXXXX" className="py-2 px-3 inline-block transition-all duration-200 hover:text-primary">
               +92 XXX XXXXXXX
             </a>
             <br />
-            <a href="mailto:info@aquapuretechnology.com" className="py-2 px-3 inline-block hover:text-white">
+            <a href="mailto:info@aquapuretechnology.com" className="py-2 px-3 inline-block transition-all duration-200 hover:text-primary">
               info@aquapuretechnology.com
             </a>
           </address>
