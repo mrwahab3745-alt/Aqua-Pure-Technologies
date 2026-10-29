@@ -7,6 +7,9 @@ const BRANDS = [
   { name: "CSM" },
 ];
 
+// Duplicated so the -50% translate loops seamlessly.
+const LOOP = [...BRANDS, ...BRANDS, ...BRANDS, ...BRANDS];
+
 export default function TrustIndicators() {
   return (
     <section className="border-y border-navy/10 bg-surface px-6 py-8">
@@ -16,20 +19,30 @@ export default function TrustIndicators() {
             Genuine components from manufacturers we&apos;re authorized to install
           </p>
         </ScrollReveal>
-        <ScrollReveal direction="up" delay={0.2}>
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
-            {BRANDS.map((brand) => (
+
+        <div
+          className="group relative overflow-hidden"
+          style={{
+            maskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+          }}
+        >
+          <div className="flex w-max animate-marquee gap-6 group-hover:[animation-play-state:paused]">
+            {LOOP.map((brand, i) => (
               <div
-                key={brand.name}
-                className="flex items-center justify-center rounded-lg border border-navy/10 bg-white px-4 py-4 opacity-40 transition-all duration-300 hover:opacity-100 hover:scale-105 hover:shadow-card-hover hover:border-primary/30"
+                key={`${brand.name}-${i}`}
+                aria-hidden={i >= BRANDS.length}
+                className="flex min-w-48 items-center justify-center rounded-lg border border-navy/10 bg-white px-6 py-4 opacity-60 transition-all duration-300 hover:scale-105 hover:border-primary/30 hover:opacity-100 hover:shadow-card-hover"
               >
-                <span className="text-sm font-semibold uppercase tracking-wide text-navy">
+                <span className="whitespace-nowrap text-sm font-semibold uppercase tracking-wide text-navy">
                   {brand.name}
                 </span>
               </div>
             ))}
           </div>
-        </ScrollReveal>
+        </div>
       </div>
     </section>
   );

@@ -28,3 +28,43 @@ body {
   color: #ffffff;
 }
 
+
+/* ---------- Animations (transform/opacity only → GPU friendly) ---------- */
+@theme {
+  --animate-wave-slow: wave-drift 18s linear infinite;
+  --animate-wave-fast: wave-drift 10s linear infinite reverse;
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-bubble: bubble-rise 14s ease-in infinite;
+  --animate-float: float-y 6s ease-in-out infinite;
+}
+
+@keyframes wave-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes bubble-rise {
+  0%   { transform: translate3d(0, 0, 0) scale(0.6); opacity: 0; }
+  15%  { opacity: 0.5; }
+  100% { transform: translate3d(var(--bx, 20px), -90vh, 0) scale(1); opacity: 0; }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -14px, 0); }
+}
+
+/* Accessibility: honour "reduce motion" for CSS animations too */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

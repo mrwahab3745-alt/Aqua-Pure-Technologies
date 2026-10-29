@@ -1,5 +1,6 @@
 import HeroRouter from "./components/sections/HeroRouter";
 import TrustIndicators from "./components/sections/TrustIndicators";
+import ROProcessStepper from "./components/sections/ROProcessStepper";
 import ProductCategoriesHub from "./components/sections/ProductCategoriesHub";
 // import CaseStudies from "./components/sections/CaseStudies";
 import AMCPanel from "./components/sections/AMCPanel";
@@ -13,6 +14,7 @@ export default function HomePage() {
       <HeroRouter />
       <TrustIndicators />
       <ProductCategoriesHub />
+      <ROProcessStepper />
       <IndustriesServed />
       <AMCPanel />
       <DynamicSegmentedFAQ />
