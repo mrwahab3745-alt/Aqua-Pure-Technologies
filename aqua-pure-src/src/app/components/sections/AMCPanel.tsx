@@ -1,4 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
 import ScrollReveal from "../ui/ScrollReveal";
+import AccentBar from "../ui/AccentBar";
 
 const SLA_COMMITMENTS = [
   "24/7 emergency breakdown response",
@@ -30,6 +34,7 @@ export default function AMCPanel() {
             Every plant is different. Your AMC should be too.
           </h2>
         </ScrollReveal>
+        <AccentBar className="mt-4" />
         <ScrollReveal direction="up" delay={0.3}>
           <p className="mt-3 max-w-xl text-sm text-white/60">
             We don&apos;t sell fixed pricing tiers — capacity, water source, and
@@ -45,11 +50,18 @@ export default function AMCPanel() {
                 SLA Commitments
               </h3>
               <ul className="mt-4 space-y-3">
-                {SLA_COMMITMENTS.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-white/80">
-                    <span aria-hidden className="mt-0.5 text-primary">●</span>
+                {SLA_COMMITMENTS.map((item, i) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -24 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.45, delay: 0.08 * i }}
+                    className="flex items-start gap-3 text-sm text-white/80"
+                  >
+                    <span aria-hidden className="mt-0.5 text-primary animate-pulse">●</span>
                     {item}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </div>
@@ -59,8 +71,15 @@ export default function AMCPanel() {
                 What&apos;s Covered
               </h3>
               <ul className="mt-4 grid gap-3 sm:grid-cols-1">
-                {COVERED_ITEMS.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-white/80">
+                {COVERED_ITEMS.map((item, i) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: -24 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-40px" }}
+                    transition={{ duration: 0.45, delay: 0.08 * i }}
+                    className="flex items-start gap-3 text-sm text-white/80"
+                  >
                     <svg
                       aria-hidden
                       className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary"
@@ -74,7 +93,7 @@ export default function AMCPanel() {
                       />
                     </svg>
                     {item}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             </div>
@@ -84,7 +103,7 @@ export default function AMCPanel() {
         <ScrollReveal direction="up" delay={0.5}>
           <a
             href="/contact?intent=amc"
-            className="mt-10 inline-flex min-h-12 items-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-6 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
+            className="btn-shimmer mt-10 inline-flex min-h-12 items-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-6 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
           >
             Request Plant-Specific AMC Quote
           </a>

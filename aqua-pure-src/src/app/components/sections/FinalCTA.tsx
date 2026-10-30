@@ -20,7 +20,7 @@ export default function FinalCTA() {
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="https://wa.me/92XXXXXXXXXX"
-              className="flex min-h-12 w-full items-center justify-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-6 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30 sm:w-auto"
+              className="btn-shimmer flex min-h-12 w-full items-center justify-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-6 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30 sm:w-auto"
             >
               Initiate WhatsApp Consultation
             </a>

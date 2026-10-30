@@ -1,20 +1,27 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import ScrollReveal from "../ui/ScrollReveal";
 import WaveDivider from "../ui/WaveDivider";
+import HeroDroplet from "../ui/HeroDroplet";
+import AnimatedHeadline from "../ui/AnimatedHeadline";
 
 // Static values (no Math.random → no hydration mismatch). Transform/opacity only.
 const BUBBLES = [
-  { left: "6%",  size: 10, delay: "0s",   dur: "13s", bx: "18px" },
-  { left: "14%", size: 18, delay: "4s",   dur: "17s", bx: "-24px" },
-  { left: "27%", size: 8,  delay: "7s",   dur: "12s", bx: "14px" },
-  { left: "41%", size: 14, delay: "2s",   dur: "16s", bx: "-16px" },
-  { left: "58%", size: 9,  delay: "9s",   dur: "14s", bx: "22px" },
-  { left: "72%", size: 20, delay: "5s",   dur: "18s", bx: "-20px" },
-  { left: "86%", size: 12, delay: "1s",   dur: "15s", bx: "16px" },
-  { left: "94%", size: 8,  delay: "8s",   dur: "13s", bx: "-12px" },
+  { left: "4%",  size: 12, delay: "0s",   dur: "11s", bx: "18px" },
+  { left: "10%", size: 26, delay: "3s",   dur: "15s", bx: "-28px" },
+  { left: "18%", size: 9,  delay: "6s",   dur: "10s", bx: "14px" },
+  { left: "27%", size: 20, delay: "1s",   dur: "14s", bx: "22px" },
+  { left: "35%", size: 12, delay: "8s",   dur: "12s", bx: "-16px" },
+  { left: "44%", size: 30, delay: "4s",   dur: "17s", bx: "26px" },
+  { left: "52%", size: 10, delay: "9s",   dur: "11s", bx: "-12px" },
+  { left: "61%", size: 18, delay: "2s",   dur: "13s", bx: "20px" },
+  { left: "69%", size: 24, delay: "7s",   dur: "16s", bx: "-24px" },
+  { left: "77%", size: 11, delay: "5s",   dur: "12s", bx: "16px" },
+  { left: "85%", size: 22, delay: "10s",  dur: "15s", bx: "-18px" },
+  { left: "93%", size: 14, delay: "1.5s", dur: "13s", bx: "12px" },
 ];
 
 type CardId = "domestic" | "business" | "parts";
@@ -53,6 +60,10 @@ const CARDS: {
 
 export default function HeroRouter() {
   const [businessOpen, setBusinessOpen] = useState(false);
+  const reduce = useReducedMotion();
+  const { scrollY } = useScroll();
+  const blobA = useTransform(scrollY, [0, 700], [0, reduce ? 0 : 140]);
+  const blobB = useTransform(scrollY, [0, 700], [0, reduce ? 0 : -90]);
 
   const toggleBusiness = useCallback(() => {
     setBusinessOpen((open) => !open);
@@ -65,20 +76,23 @@ export default function HeroRouter() {
   return (
     <section className="relative overflow-hidden bg-navy px-6 pb-28 pt-16 md:pb-36 md:pt-24">
       {/* Ambient glow blobs */}
-      <div
+      <motion.div
         aria-hidden
-        className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-primary/25 blur-3xl animate-float"
+        style={{ y: blobA }}
+        className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-primary/30 blur-3xl animate-float"
       />
-      <div
+      <motion.div
         aria-hidden
-        className="pointer-events-none absolute -bottom-32 -left-24 h-96 w-96 rounded-full bg-cyan-400/10 blur-3xl animate-float [animation-delay:-3s]"
+        style={{ y: blobB }}
+        className="pointer-events-none absolute -bottom-32 -left-24 h-96 w-96 rounded-full bg-cyan-400/15 blur-3xl animate-float [animation-delay:-3s]"
       />
+      <HeroDroplet />
       {/* Rising bubbles */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         {BUBBLES.map((b, i) => (
           <span
             key={i}
-            className="absolute bottom-0 rounded-full border border-white/30 bg-white/10 animate-bubble"
+            className="absolute bottom-0 rounded-full border border-white/50 bg-white/20 shadow-[inset_-2px_-2px_6px_rgba(255,255,255,0.35)] animate-bubble"
             style={{
               left: b.left,
               width: b.size,
@@ -99,10 +113,7 @@ export default function HeroRouter() {
         </ScrollReveal>
         <ScrollReveal direction="up" delay={0.2}>
           <h1 className="max-w-2xl text-3xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-            Water treatment built for{" "}
-            <span className="bg-gradient-to-r from-primary to-cyan-300 bg-clip-text text-transparent">
-              how you actually use water.
-            </span>
+            <AnimatedHeadline plain="Water treatment built for" accent="how you actually use water." />
           </h1>
         </ScrollReveal>
         <ScrollReveal direction="up" delay={0.3}>

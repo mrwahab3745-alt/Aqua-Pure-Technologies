@@ -1,3 +1,4 @@
+import ScrollProgress from "./components/ui/ScrollProgress";
 import HeroRouter from "./components/sections/HeroRouter";
 import TrustIndicators from "./components/sections/TrustIndicators";
 import ROProcessStepper from "./components/sections/ROProcessStepper";
@@ -11,6 +12,7 @@ import DynamicSegmentedFAQ from "./components/sections/DynamicSegmentedFAQ";
 export default function HomePage() {
   return (
     <main>
+      <ScrollProgress />
       <HeroRouter />
       <TrustIndicators />
       <ProductCategoriesHub />

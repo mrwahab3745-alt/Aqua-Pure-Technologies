@@ -2,6 +2,8 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import ScrollReveal from "../ui/ScrollReveal";
+import AccentBar from "../ui/AccentBar";
+
 
 const STEPS = [
   {
@@ -38,6 +40,7 @@ export default function ROProcessStepper() {
             From raw water to pure water, in four stages.
           </h2>
         </ScrollReveal>
+        <AccentBar className="mt-4" />
 
         <div className="relative mt-14">
           {/* Connector line (desktop) — draws itself on scroll */}

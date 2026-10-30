@@ -1,5 +1,7 @@
 import Link from "next/link";
 import ScrollReveal from "../ui/ScrollReveal";
+import AccentBar from "../ui/AccentBar";
+
 
 const CATEGORIES = [
   {
@@ -42,6 +44,7 @@ export default function ProductCategoriesHub() {
             Every water problem, matched to the right system.
           </h2>
         </ScrollReveal>
+        <AccentBar className="mt-4" />
 
         <ScrollReveal direction="up" delay={0.3}>
           <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
