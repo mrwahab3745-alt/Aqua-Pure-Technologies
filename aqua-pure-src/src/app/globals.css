@@ -139,3 +139,8 @@ body {
 }
 .range-water:hover::-webkit-slider-thumb { transform: scale(1.12); }
 .range-water:focus-visible { outline: 2px solid #67e8f9; outline-offset: 8px; }
+
+/* ---------- Inner pages ---------- */
+@theme {
+  --animate-spin-slow: spin 40s linear infinite;
+}

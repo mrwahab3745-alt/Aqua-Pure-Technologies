@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import PageHero from "../../components/ui/PageHero";
 import ScrollReveal from "../../components/ui/ScrollReveal";
 
 // Keep this dataset structure swappable — once Wahab's keyword research
@@ -97,22 +98,18 @@ export default function SparePartsPage() {
   }, []);
 
   return (
-    <main className="bg-white px-6 py-16 md:py-24">
+    <main>
+      <PageHero
+        crumbs={[{ label: "Home", href: "/" }, { label: "Spare parts" }]}
+        title="Genuine RO components. Checked stock, fast quotation."
+        intro="Membranes, vessels, pumps, valves and panels. Pick a category, check availability and ask for a quote."
+      />
+      <div className="bg-white px-6 pb-16 md:pb-24">
       <div className="mx-auto max-w-7xl">
-        <ScrollReveal direction="up" delay={0.1}>
-          <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-            Spare Parts Catalog
-          </p>
-        </ScrollReveal>
-        <ScrollReveal direction="up" delay={0.2}>
-          <h1 className="mt-2 max-w-2xl text-3xl font-extrabold text-navy sm:text-4xl">
-            Genuine RO components. Checked stock, fast quotation.
-          </h1>
-        </ScrollReveal>
 
         {/* Sticky filter bar */}
         <ScrollReveal direction="up" delay={0.3}>
-          <div className="sticky top-[73px] z-40 -mx-6 mt-8 border-b border-navy/10 bg-white/95 px-6 py-4 backdrop-blur-md">
+          <div className="sticky top-[73px] z-40 -mx-6 mt-0 border-b border-navy/10 bg-white/95 px-6 py-4 backdrop-blur-md">
             <div className="flex flex-wrap gap-2">
               {CATEGORIES.map((category) => (
                   <button
@@ -181,6 +178,7 @@ export default function SparePartsPage() {
             No parts listed in this category yet.
           </p>
         )}
+      </div>
       </div>
     </main>
   );
