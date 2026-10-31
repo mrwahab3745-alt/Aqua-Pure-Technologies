@@ -3,7 +3,7 @@ export default function HeroDroplet() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none absolute right-[6%] top-1/2 hidden h-72 w-72 -translate-y-1/2 lg:block xl:h-80 xl:w-80"
+      className="pointer-events-none absolute -right-10 top-24 h-52 w-52 opacity-30 sm:right-[3%] sm:h-60 sm:w-60 sm:opacity-40 lg:right-[6%] lg:top-[7%] lg:h-72 lg:w-72 lg:opacity-100 xl:h-80 xl:w-80"
     >
       {[0, 1, 2].map((i) => (
         <span

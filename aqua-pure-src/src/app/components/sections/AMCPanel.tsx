@@ -59,7 +59,7 @@ export default function AMCPanel() {
                     transition={{ duration: 0.45, delay: 0.08 * i }}
                     className="flex items-start gap-3 text-sm text-white/80"
                   >
-                    <span aria-hidden className="mt-0.5 text-primary animate-pulse">●</span>
+                    <span aria-hidden className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-primary animate-pulse" />
                     {item}
                   </motion.li>
                 ))}

@@ -27,25 +27,30 @@ export function PlantLineVisual() {
   );
 }
 
-/** Services: a spiral-wound membrane cross-section that turns slowly. */
+/** Services: water passes through the membrane, salts are held back and sent to drain. */
 export function MembraneVisual() {
+  const water = [[118, 0], [136, 0.9], [156, 1.8], [128, 2.7], [146, 3.6]];
+  const salt = [[122, 0.4], [150, 1.7], [136, 3.0]];
   return (
     <div aria-hidden className={wrap}>
-      <div className="flex h-full w-full items-center justify-center">
-        <svg viewBox="0 0 240 240" className="h-64 w-64 animate-float" fill="none">
-          <circle cx="120" cy="120" r="108" stroke="#67e8f9" strokeOpacity=".5" strokeWidth="3" />
-          <g className="animate-spin-slow" style={{ transformOrigin: "120px 120px" }}>
-            <path
-              d="M120 120m0 0c8 0 12 6 12 12s-6 14-14 14-18-8-18-18 10-22 24-22 28 14 28 30-16 34-36 34-42-22-42-46 26-50 56-50 58 30 58 62-34 66-72 66"
-              stroke="#67e8f9"
-              strokeWidth="5"
-              strokeLinecap="round"
-              strokeOpacity=".85"
-            />
-          </g>
-          <circle cx="120" cy="120" r="9" fill="#007BFF" />
-        </svg>
-      </div>
+      <svg viewBox="0 0 480 280" className="h-full w-full" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="50" y="95" width="380" height="90" rx="45" stroke="#67e8f9" strokeOpacity=".7" strokeWidth="2.5" fill="#67e8f9" fillOpacity=".05" />
+        <rect x="228" y="95" width="24" height="90" fill="#007BFF" fillOpacity=".4" />
+        <path d="M234 98v84M240 98v84M246 98v84" stroke="#67e8f9" strokeOpacity=".6" strokeWidth="1.5" />
+        {water.map(([y, d], i) => (
+          <circle key={`w${i}`} cx="80" cy={y} r="4.5" fill="#67e8f9" className="pt-water" style={{ animationDelay: `${d}s` }} />
+        ))}
+        {salt.map(([y, d], i) => (
+          <circle key={`s${i}`} cx="90" cy={y} r="5.5" fill="#fbbf24" className="pt-salt" style={{ animationDelay: `${d}s` }} />
+        ))}
+        <path d="M240 186v50" stroke="#fca5a5" strokeWidth="3" className="flow-dash" />
+        <g fontSize="12" fill="#67e8f9" fillOpacity=".85" textAnchor="middle">
+          <text x="110" y="80">Feed water</text>
+          <text x="240" y="80">Membrane</text>
+          <text x="370" y="80">Pure water</text>
+          <text x="240" y="256" fill="#fca5a5">Salts to drain</text>
+        </g>
+      </svg>
     </div>
   );
 }

@@ -144,3 +144,19 @@ body {
 @theme {
   --animate-spin-slow: spin 40s linear infinite;
 }
+
+/* Membrane demo: water passes through, salts are held back and drained */
+.pt-water { animation: pass-through 4.5s linear infinite; opacity: 0; }
+.pt-salt  { animation: rejected 4.5s linear infinite; opacity: 0; }
+@keyframes pass-through {
+  0%   { transform: translate3d(0, 0, 0); opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { transform: translate3d(310px, 0, 0); opacity: 0; }
+}
+@keyframes rejected {
+  0%   { transform: translate3d(0, 0, 0); opacity: 0; }
+  8%   { opacity: 1; }
+  55%  { transform: translate3d(128px, 0, 0); opacity: 1; }
+  100% { transform: translate3d(150px, 78px, 0); opacity: 0; }
+}

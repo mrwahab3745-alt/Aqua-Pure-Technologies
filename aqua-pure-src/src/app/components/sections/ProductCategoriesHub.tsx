@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ScrollReveal from "../ui/ScrollReveal";
+import { ArrowRight } from "../ui/Icons";
 import AccentBar from "../ui/AccentBar";
 
 
@@ -63,7 +64,7 @@ export default function ProductCategoriesHub() {
                 </div>
                 <span className="mt-5 text-sm font-semibold text-primary">
                   View details{" "}
-                  <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  <ArrowRight className="ml-1 inline h-4 w-4 align-[-2px] transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
               </Link>
               </ScrollReveal>

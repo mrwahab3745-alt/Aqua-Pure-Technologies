@@ -7,6 +7,7 @@
 // Mobile menu uses a hidden checkbox + peer, same stateless pattern as
 // SegmentedFAQ — no client component, no hydration cost.
 
+import { MenuIcon } from "../ui/Icons";
 import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
@@ -82,7 +83,7 @@ export default function Navbar() {
           aria-label="Toggle menu"
           className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-lg border border-navy/10 md:hidden hover:bg-primary/10 hover:border-primary/30 hover:underline"
         >
-          <span aria-hidden className="text-lg leading-none text-navy">☰</span>
+          <MenuIcon className="h-6 w-6 text-navy" />
         </label>
       </div>
 

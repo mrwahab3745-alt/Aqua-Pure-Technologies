@@ -13,9 +13,9 @@ export default function AnimatedHeadline({
   const reduce = useReducedMotion();
 
   const word = (w: string, i: number, cls = "") => (
-    <span key={`${w}-${i}`} className="inline-block overflow-hidden pb-1 align-bottom">
+    <span key={`${w}-${i}`} className="inline-block overflow-hidden pb-[0.25em] -mb-[0.25em] align-bottom">
       <motion.span
-        className={`inline-block ${cls}`}
+        className={`inline-block pb-[0.25em] -mb-[0.25em] ${cls}`}
         initial={reduce ? false : { y: "110%", opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.15 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}

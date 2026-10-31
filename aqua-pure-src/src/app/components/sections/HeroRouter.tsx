@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import Link from "next/link";
 import ScrollReveal from "../ui/ScrollReveal";
 import WaveDivider from "../ui/WaveDivider";
+import { ArrowRight } from "../ui/Icons";
 import HeroDroplet from "../ui/HeroDroplet";
 import AnimatedHeadline from "../ui/AnimatedHeadline";
 
@@ -173,8 +174,8 @@ export default function HeroRouter() {
                     </div>
 
                     {!businessOpen && (
-                      <span className="mt-5 text-sm font-semibold text-primary">
-                        Choose your type →
+                      <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                        Choose your type <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                       </span>
                     )}
                   </div>
@@ -185,7 +186,7 @@ export default function HeroRouter() {
                 <Link
                   key={card.id}
                   href={card.href!}
-                  className="flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:border-primary hover:scale-[1.03] hover:shadow-xl hover:shadow-primary/10"
+                  className="group flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:border-primary hover:scale-[1.03] hover:shadow-xl hover:shadow-primary/10"
                 >
                   <div>
                     <span className="text-xs font-semibold uppercase tracking-widest text-primary">
@@ -198,8 +199,8 @@ export default function HeroRouter() {
                       {card.description}
                     </p>
                   </div>
-                  <span className="mt-5 text-sm font-semibold text-primary">
-                    Get started →
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
+                    Get started <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
                 </Link>
               );

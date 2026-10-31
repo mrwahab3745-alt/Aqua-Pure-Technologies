@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AlertIcon, CheckCircle } from "../../components/ui/Icons";
 import PageHero from "../../components/ui/PageHero";
 import ScrollReveal from "../../components/ui/ScrollReveal";
 
@@ -68,11 +69,11 @@ export default function DomesticPage() {
                   className="grid gap-3 rounded-2xl border border-navy/10 transition-all duration-200 hover:border-primary/30 hover:shadow-card sm:grid-cols-2"
                 >
                   <div className="flex items-center gap-3 p-6">
-                    <span aria-hidden className="text-lg">😕</span>
+                    <span aria-hidden className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-600"><AlertIcon className="h-5 w-5" /></span>
                     <p className="text-sm text-navy/70">{row.problem}</p>
                   </div>
                   <div className="flex items-center gap-3 border-t border-navy/10 bg-surface p-6 sm:border-l sm:border-t-0">
-                    <span aria-hidden className="text-lg">✅</span>
+                    <span aria-hidden className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary"><CheckCircle className="h-5 w-5" /></span>
                     <p className="text-sm font-medium text-navy">{row.solution}</p>
                   </div>
                 </div>

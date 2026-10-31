@@ -94,9 +94,9 @@ export default function PageHero({
 
         <h1 className="mt-8 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-[-0.035em] text-white sm:text-5xl md:text-6xl">
           {words.map((w, i) => (
-            <span key={`${w}-${i}`} className="inline-block overflow-hidden pb-1 align-bottom">
+            <span key={`${w}-${i}`} className="inline-block overflow-hidden pb-[0.25em] -mb-[0.25em] align-bottom">
               <motion.span
-                className="inline-block"
+                className="inline-block pb-[0.25em] -mb-[0.25em]"
                 initial={reduce ? false : { y: "110%", opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.7, delay: 0.1 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
