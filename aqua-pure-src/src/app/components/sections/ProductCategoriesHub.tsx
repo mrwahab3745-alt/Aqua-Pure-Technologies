@@ -1,5 +1,8 @@
 import Link from "next/link";
 import ScrollReveal from "../ui/ScrollReveal";
+import { ArrowRight } from "../ui/Icons";
+import AccentBar from "../ui/AccentBar";
+
 
 const CATEGORIES = [
   {
@@ -42,15 +45,15 @@ export default function ProductCategoriesHub() {
             Every water problem, matched to the right system.
           </h2>
         </ScrollReveal>
+        <AccentBar className="mt-4" />
 
         <ScrollReveal direction="up" delay={0.3}>
           <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {CATEGORIES.map((cat, i) => (
+              <ScrollReveal key={cat.href} direction="up" delay={0.1 * i} className="h-full">
               <Link
-                key={cat.href}
                 href={cat.href}
-                className="group flex flex-col justify-between rounded-2xl border border-navy/10 bg-surface p-6 transition-all duration-300 hover:border-primary hover:bg-white hover:scale-105 hover:shadow-card-hover"
-                style={{ animationDelay: `${i * 100}ms` }}
+                className="group flex h-full flex-col justify-between rounded-2xl border border-navy/10 bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:bg-white hover:shadow-card-hover"
               >
                 <div>
                   <span className="text-xs font-semibold uppercase tracking-widest text-navy/50">
@@ -59,10 +62,12 @@ export default function ProductCategoriesHub() {
                   <h3 className="mt-2 text-lg font-bold text-navy">{cat.title}</h3>
                   <p className="mt-2 text-sm text-navy/60">{cat.description}</p>
                 </div>
-                <span className="mt-5 text-sm font-semibold text-primary group-hover:underline">
-                  View details →
+                <span className="mt-5 text-sm font-semibold text-primary">
+                  View details{" "}
+                  <ArrowRight className="ml-1 inline h-4 w-4 align-[-2px] transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
               </Link>
+              </ScrollReveal>
             ))}
           </div>
         </ScrollReveal>

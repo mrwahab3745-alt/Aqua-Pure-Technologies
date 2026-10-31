@@ -81,10 +81,10 @@ export default function Footer() {
             with the verified GBP details before launch.
           */}
           <address className="mt-4 not-italic text-sm text-white/60 space-y-4">
-            [Street Address], [Area], [City], Pakistan
+             Pakistan
             <br />
-            <a href="tel:+92XXXXXXXXXX" className="py-2 px-3 inline-block transition-all duration-200 hover:text-primary">
-              +92 XXX XXXXXXX
+            <a href="tel:+923004794520" className="py-2 px-3 inline-block transition-all duration-200 hover:text-primary">
+              +92 300 4794520
             </a>
             <br />
             <a href="mailto:info@aquapuretechnology.com" className="py-2 px-3 inline-block transition-all duration-200 hover:text-primary">
