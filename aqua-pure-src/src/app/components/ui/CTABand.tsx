@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { whatsappUrl } from "../../../lib/site";
 
-/** Closing band shared by inner pages. Real WhatsApp number from the contact page. */
+/** Closing band shared by inner pages. WhatsApp number comes from src/lib/site.ts. */
 export default function CTABand({
   title = "Tell us about your water.",
   text = "Share your source, daily use and site type. An engineer replies with a plan and a quote, not a script.",
@@ -18,7 +19,7 @@ export default function CTABand({
           <p className="mt-3 text-base leading-relaxed text-white/70">{text}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
-              href="https://wa.me/923245500653"
+              href={whatsappUrl()}
               className="btn-shimmer inline-flex min-h-12 items-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-6 text-sm font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
             >
               Chat on WhatsApp

@@ -5,6 +5,8 @@
  * If the variable is missing or the sheet can't be read, the built-in list below
  * is used, so the page never breaks. See PARTS-SHEET-GUIDE.md.
  */
+import { SITE } from "./site";
+
 export type Part = {
   id: string;
   brand: string;
@@ -14,7 +16,7 @@ export type Part = {
   inStock: boolean;
 };
 
-export const WHATSAPP_NUMBER = "923245500653";
+export const WHATSAPP_NUMBER = SITE.whatsapp;
 
 export function buildWhatsAppUrl(modelName: string): string {
   const message = `Hi, I'd like to check stock and get a quotation for: ${modelName}`;

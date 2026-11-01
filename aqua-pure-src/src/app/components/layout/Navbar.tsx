@@ -9,6 +9,8 @@
 
 import { MenuIcon } from "../ui/Icons";
 import { usePathname } from "next/navigation";
+import Logo from "../ui/Logo";
+import { whatsappUrl } from "../../../lib/site";
 
 const NAV_LINKS = [
   { href: "/about", label: "About" },
@@ -38,8 +40,8 @@ export default function Navbar() {
 
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Left — Logo */}
-        <a href="/" className="text-lg font-extrabold tracking-tight text-navy">
-          Aqua<span className="text-primary">Pure</span>
+        <a href="/" aria-label="Aqua Pure Technology, home" className="flex items-center">
+          <Logo />
         </a>
 
         {/* Center — desktop links only */}
@@ -71,7 +73,7 @@ export default function Navbar() {
 
         {/* Right — micro CTA, desktop only */}
         <a
-          href="https://wa.me/92XXXXXXXXXX"
+          href={whatsappUrl()}
           className="hidden min-h-12 items-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-4 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30 md:inline-flex"
         >
           WhatsApp Us
@@ -112,7 +114,7 @@ export default function Navbar() {
             );
           })}
           <a
-            href="https://wa.me/92XXXXXXXXXX"
+            href={whatsappUrl()}
             className="mt-2 flex min-h-12 items-center justify-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-4 text-center text-sm font-bold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
           >
             WhatsApp Us

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ScrollReveal from "../components/ui/ScrollReveal";
 import PageHero from "../components/ui/PageHero";
+import { SITE, mapsUrl, whatsappUrl } from "../../lib/site";
 import { RippleVisual } from "../components/ui/PageVisual";
 
 export const metadata: Metadata = {
@@ -30,23 +31,26 @@ export default function ContactPage() {
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
           <ScrollReveal direction="up">
             <ul className="space-y-3">
-              <li>
-                <a
-                  href="tel:+923245500653"
-                  className="group flex items-center gap-4 rounded-2xl border border-navy/10 bg-surface p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary hover:bg-white hover:shadow-card-hover"
-                >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white">
-                    <svg {...svgProps} className={ic}><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" /></svg>
-                  </span>
-                  <span>
-                    <span className="block text-sm text-navy/55">Technical helpdesk</span>
-                    <span className="block text-lg font-bold text-navy transition-colors group-hover:text-primary">+92 324 5500653</span>
-                  </span>
-                </a>
+              <li className="flex items-start gap-4 rounded-2xl border border-navy/10 bg-surface p-5">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white">
+                  <svg {...svgProps} className={ic}><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" /></svg>
+                </span>
+                <span>
+                  <span className="block text-sm text-navy/55">Technical helpdesk</span>
+                  {SITE.phones.map((ph) => (
+                    <a
+                      key={ph.tel}
+                      href={`tel:${ph.tel}`}
+                      className="block py-0.5 text-lg font-bold text-navy transition-colors hover:text-primary"
+                    >
+                      {ph.display}
+                    </a>
+                  ))}
+                </span>
               </li>
               <li>
                 <a
-                  href="https://wa.me/923245500653"
+                  href={whatsappUrl()}
                   className="group flex items-center gap-4 rounded-2xl border border-navy/10 bg-surface p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary hover:bg-white hover:shadow-card-hover"
                 >
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white">
@@ -55,6 +59,20 @@ export default function ContactPage() {
                   <span>
                     <span className="block text-sm text-navy/55">WhatsApp</span>
                     <span className="block text-lg font-bold text-navy transition-colors group-hover:text-primary">Chat with an engineer</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${SITE.email}`}
+                  className="group flex items-center gap-4 rounded-2xl border border-navy/10 p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary hover:shadow-card-hover"
+                >
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-surface">
+                    <svg {...svgProps} className={ic}><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m4 7 8 6 8-6" /></svg>
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-sm text-navy/55">Email</span>
+                    <span className="block break-all text-base font-bold text-navy transition-colors group-hover:text-primary">{SITE.email}</span>
                   </span>
                 </a>
               </li>
@@ -78,9 +96,11 @@ export default function ContactPage() {
                 <span>
                   <span className="block text-sm text-navy/55">Find us</span>
                   <address className="mt-1 not-italic text-sm leading-relaxed text-navy/80">
-                    [Street Address], [Area], [City], Pakistan
+                    {SITE.address.lines.map((line) => (
+                      <span key={line} className="block">{line}</span>
+                    ))}
                   </address>
-                  <a href="#" className="mt-2 inline-block text-sm font-semibold text-primary hover:underline">
+                  <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-sm font-semibold text-primary hover:underline">
                     View on Google Maps
                   </a>
                 </span>

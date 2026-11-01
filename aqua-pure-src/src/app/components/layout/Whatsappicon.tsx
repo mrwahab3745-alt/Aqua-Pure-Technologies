@@ -1,7 +1,9 @@
 "use client";
 
+import { SITE } from "../../../lib/site";
+
 export default function WhatsAppButton() {
-  const phoneNumber = "923245500653"; 
+  const phoneNumber = SITE.whatsapp;
   const defaultMessage = encodeURIComponent(
     "Hi Aqua Pure Technology, I am visiting your website and would like to inquire about your RO plants and services."
   );
