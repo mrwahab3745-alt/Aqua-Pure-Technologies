@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import FormRedirect from "../components/ui/FormRedirect";
 import ScrollReveal from "../components/ui/ScrollReveal";
 import PageHero from "../components/ui/PageHero";
-import { SITE, mapsUrl, whatsappUrl } from "../../lib/site";
+import { FORM_ACCESS_KEY, SITE, mapsUrl, whatsappUrl } from "../../lib/site";
 import { RippleVisual } from "../components/ui/PageVisual";
 
 export const metadata: Metadata = {
@@ -115,18 +116,21 @@ export default function ContactPage() {
               className="relative h-fit overflow-hidden rounded-3xl bg-gradient-to-br from-navy to-[#0a1226] p-6 shadow-xl shadow-navy/20 sm:p-10"
             >
               <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-primary/25 blur-3xl" />
-              <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+              <input type="hidden" name="access_key" value={FORM_ACCESS_KEY} />
+              {/* spam trap: bots tick it, humans never see it (Web3Forms drops these) */}
+              <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
+              <FormRedirect />
               <input type="hidden" name="subject" value="Website Contact Form — New Message" />
 
               <h2 className="relative text-2xl font-extrabold tracking-tight text-white">Send us a message</h2>
               <div className="relative mt-6 grid gap-5">
                 <div>
                   <label htmlFor="name" className={label}>Full name</label>
-                  <input id="name" name="name" type="text" required className={field} placeholder="Your name" />
+                  <input id="name" name="name" type="text" required maxLength={80} autoComplete="name" className={field} placeholder="Your name" />
                 </div>
                 <div>
                   <label htmlFor="contact" className={label}>Phone or email</label>
-                  <input id="contact" name="contact" type="text" required className={field} placeholder="+92 or you@example.com" />
+                  <input id="contact" name="contact" type="text" required maxLength={120} autoComplete="email" pattern="^(\+?[0-9][0-9\s\-]{8,18}|[^\s@]+@[^\s@]+\.[^\s@]{2,})$" title="Enter a phone number (e.g. 0324-5500653) or an email address" className={field} placeholder="+92 or you@example.com" />
                 </div>
                 <div>
                   <label htmlFor="message" className={label}>Message</label>
@@ -135,6 +139,7 @@ export default function ContactPage() {
                     name="message"
                     rows={5}
                     required
+                    maxLength={2000}
                     className={`${field} py-3`}
                     placeholder="Tell us what you need — installation, maintenance, spare parts, or a quotation."
                   />

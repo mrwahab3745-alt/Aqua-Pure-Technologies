@@ -26,3 +26,10 @@ export const SITE = {
 export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SITE.address.full)}`;
 export const whatsappUrl = (text?: string) =>
   `https://wa.me/${SITE.whatsapp}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
+
+// Web3Forms access keys are public by design (they only allow *sending to you*).
+// Keep it in an env var so it is not hard-coded; set it in Vercel -> Settings -> Environment Variables.
+export const FORM_ACCESS_KEY = process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? "";
+
+// Canonical site URL (used for metadata, sitemap, robots). Set NEXT_PUBLIC_SITE_URL once the real domain is live.
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://aqua-pure-technologies.vercel.app").replace(/\/$/, "");

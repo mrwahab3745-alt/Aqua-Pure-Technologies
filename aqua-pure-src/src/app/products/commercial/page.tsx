@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import PageHero from "../../components/ui/PageHero";
+import FormRedirect from "../../components/ui/FormRedirect";
 import ScrollReveal from "../../components/ui/ScrollReveal";
+import { FORM_ACCESS_KEY } from "../../../lib/site";
 
 // NOTE: Core Metrics Grid below uses placeholder values pending
 // confirmation from Wahab — see Master Project Document, Open Items.
@@ -133,7 +135,10 @@ export default function CommercialPage() {
               method="POST"
               className="rounded-2xl bg-white/5 p-6 sm:p-8"
             >
-              <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+              <input type="hidden" name="access_key" value={FORM_ACCESS_KEY} />
+              {/* spam trap: bots tick it, humans never see it (Web3Forms drops these) */}
+              <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
+              <FormRedirect />
               <input type="hidden" name="subject" value="Commercial RO — New Quote Request" />
 
               <div className="grid gap-4">

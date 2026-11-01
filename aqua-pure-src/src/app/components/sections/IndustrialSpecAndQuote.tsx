@@ -1,6 +1,8 @@
 "use client";
 
+import FormRedirect from "../ui/FormRedirect";
 import ScrollReveal from "../ui/ScrollReveal";
+import { FORM_ACCESS_KEY } from "../../../lib/site";
 
 const PLANT_MODELS = [
   {
@@ -126,7 +128,10 @@ export default function IndustrialSpecAndQuote() {
               method="POST"
               className="rounded-2xl bg-white/5 p-6 sm:p-8"
             >
-              <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+              <input type="hidden" name="access_key" value={FORM_ACCESS_KEY} />
+              {/* spam trap: bots tick it, humans never see it (Web3Forms drops these) */}
+              <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
+              <FormRedirect />
               <input type="hidden" name="subject" value="Industrial RO — New Quote Request" />
 
               <div className="grid gap-4">

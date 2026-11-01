@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE, SITE_URL } from "../lib/site";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import dynamic from "next/dynamic";
 import Navbar from "./components/layout/Navbar";
@@ -18,8 +19,28 @@ const plusJakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+
+const localBusiness = {
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  name: SITE.name,
+  description: SITE.tagline,
+  url: SITE_URL,
+  telephone: SITE.phones.map((p) => p.tel),
+  email: SITE.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "S-86-R 89, Near Ichhara Shopping Center, Feroz Pur Road",
+    addressLocality: "Lahore",
+    addressCountry: "PK",
+  },
+  areaServed: ["Lahore", "Karachi", "Islamabad"],
+};
+// "<" is escaped so the JSON can never close the script tag.
+const localBusinessJson = JSON.stringify(localBusiness).replace(/</g, "\\u003c");
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.aquapuretechnology.com"), // replace with production domain
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Aqua Pure Technology | RO Plants, Spare Parts & Water Treatment — Pakistan",
     template: "%s | Aqua Pure Technology",
@@ -51,6 +72,7 @@ export default function RootLayout({
         className="font-sans bg-surface text-navy antialiased"
         suppressHydrationWarning
       >
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: localBusinessJson }} />
         <Navbar />
         {children}
         <Footer />
