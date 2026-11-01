@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PageHero from "../../components/ui/PageHero";
 import ScrollReveal from "../../components/ui/ScrollReveal";
 
 // NOTE: Core Metrics Grid below uses placeholder values pending
@@ -41,34 +42,16 @@ export default function CommercialPage() {
   return (
     <main>
       {/* Operational Hero */}
-      <section className="bg-navy px-6 py-16 md:py-24">
-        <div className="mx-auto max-w-7xl">
-          <ScrollReveal direction="up" delay={0.1}>
-            <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-              Commercial Water Systems
-            </p>
-          </ScrollReveal>
-          <ScrollReveal direction="up" delay={0.2}>
-            <h1 className="mt-3 max-w-2xl text-3xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-              Reliable water supply for offices, schools, and clinics — without the operational headache.
-            </h1>
-          </ScrollReveal>
-          <ScrollReveal direction="up" delay={0.3}>
-            <p className="mt-4 max-w-xl text-base text-white/70 sm:text-lg">
-              Scaled to your headcount, backed by an AMC that keeps things
-              running so your team never has to think about it.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal direction="up" delay={0.4}>
-            <a
-              href="#get-quote"
-              className="mt-8 inline-flex min-h-12 items-center justify-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-8 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
-            >
-              Request a Site Assessment
-            </a>
-          </ScrollReveal>
-        </div>
-      </section>
+      <PageHero
+        crumbs={[{ label: "Home", href: "/" }, { label: "Commercial" }]}
+        title="Reliable water supply for offices, schools, and clinics — without the operational headache."
+        intro="Scaled to your headcount, backed by an AMC that keeps things running so your team never has to think about it."
+        actions={
+          <a href="#get-quote" className="btn-shimmer inline-flex min-h-12 items-center justify-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-8 text-sm font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
+            Request a Site Assessment
+          </a>
+        }
+      />
 
       {/* Core Metrics Grid */}
       <section className="bg-white px-6 py-16 md:py-24">

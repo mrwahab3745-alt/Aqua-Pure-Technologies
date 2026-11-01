@@ -1,7 +1,11 @@
 "use client";
 
 import { ReactNode } from "react";
-import { motion, type TargetAndTransition } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  type TargetAndTransition,
+} from "framer-motion";
 
 type Direction = "up" | "down" | "left" | "right";
 
@@ -14,11 +18,13 @@ interface ScrollRevealProps {
   once?: boolean;
 }
 
+const OFFSET = 32;
+
 const directionVariants: Record<Direction, TargetAndTransition> = {
-  up: { opacity: 0, y: 60 },
-  down: { opacity: 0, y: -60 },
-  left: { opacity: 0, x: -60 },
-  right: { opacity: 0, x: 60 },
+  up: { opacity: 0, y: OFFSET },
+  down: { opacity: 0, y: -OFFSET },
+  left: { opacity: 0, x: -OFFSET },
+  right: { opacity: 0, x: OFFSET },
 };
 
 export default function ScrollReveal({
@@ -29,20 +35,22 @@ export default function ScrollReveal({
   duration = 0.6,
   once = true,
 }: ScrollRevealProps) {
+  const reduceMotion = useReducedMotion();
+
+  // Respect the user's OS "reduce motion" setting: render content as-is.
+  if (reduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       initial={directionVariants[direction]}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once, margin: "-50px" }}
-      transition={{
-        duration,
-        delay,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      }}
+      transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}
     </motion.div>
   );
 }
-

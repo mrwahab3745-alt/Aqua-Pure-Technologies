@@ -7,7 +7,10 @@
 // Mobile menu uses a hidden checkbox + peer, same stateless pattern as
 // SegmentedFAQ — no client component, no hydration cost.
 
+import { MenuIcon } from "../ui/Icons";
 import { usePathname } from "next/navigation";
+import Logo from "../ui/Logo";
+import { whatsappUrl } from "../../../lib/site";
 
 const NAV_LINKS = [
   { href: "/about", label: "About" },
@@ -37,8 +40,8 @@ export default function Navbar() {
 
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Left — Logo */}
-        <a href="/" className="text-lg font-extrabold tracking-tight text-navy">
-          Aqua<span className="text-primary">Pure</span>
+        <a href="/" aria-label="Aqua Pure Technology, home" className="flex items-center">
+          <Logo />
         </a>
 
         {/* Center — desktop links only */}
@@ -70,7 +73,7 @@ export default function Navbar() {
 
         {/* Right — micro CTA, desktop only */}
         <a
-          href="https://wa.me/92XXXXXXXXXX"
+          href={whatsappUrl()}
           className="hidden min-h-12 items-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-4 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30 md:inline-flex"
         >
           WhatsApp Us
@@ -82,7 +85,7 @@ export default function Navbar() {
           aria-label="Toggle menu"
           className="flex h-12 w-12 cursor-pointer items-center justify-center rounded-lg border border-navy/10 md:hidden hover:bg-primary/10 hover:border-primary/30 hover:underline"
         >
-          <span aria-hidden className="text-lg leading-none text-navy">☰</span>
+          <MenuIcon className="h-6 w-6 text-navy" />
         </label>
       </div>
 
@@ -111,7 +114,7 @@ export default function Navbar() {
             );
           })}
           <a
-            href="https://wa.me/92XXXXXXXXXX"
+            href={whatsappUrl()}
             className="mt-2 flex min-h-12 items-center justify-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-4 text-center text-sm font-bold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
           >
             WhatsApp Us

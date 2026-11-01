@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PageHero from "../../components/ui/PageHero";
 import ScrollReveal from "../../components/ui/ScrollReveal";
 import DynamicSpecAndQuote from "../../components/sections/DynamicSpecAndQuote";
 
@@ -12,56 +13,24 @@ export default function IndustrialPage() {
   return (
     <main>
       {/* Engineering Hero */}
-      <section className="bg-navy px-6 py-16 md:py-24">
-        <div className="mx-auto max-w-7xl">
-          <ScrollReveal direction="up" delay={0.1}>
-            <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-              Industrial Water Treatment
-            </p>
-          </ScrollReveal>
-          <ScrollReveal direction="up" delay={0.2}>
-            <h1 className="mt-3 max-w-3xl text-3xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
-              High-Yield Industrial Desalination &amp; RO Systems
-            </h1>
-          </ScrollReveal>
-          <ScrollReveal direction="up" delay={0.3}>
-            <p className="mt-4 max-w-2xl text-base text-white/70 sm:text-lg">
-              Engineered to your feed water analysis and process demand — from
-              5,000 GPD single-line plants to 20,000+ GPD multi-stage systems
-              for textile, pharma, and process manufacturing.
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal direction="up" delay={0.4}>
-            <dl className="mt-10 grid gap-6 sm:grid-cols-3">
-              <div className="transition-all duration-200 hover:scale-105">
-                <dt className="text-xs font-semibold uppercase tracking-widest text-white/70">
-                  Capacity Range
-                </dt>
-                <dd className="mt-1 font-mono text-2xl font-bold text-white">
-                  5K – 20K+ GPD
-                </dd>
-              </div>
-              <div className="transition-all duration-200 hover:scale-105">
-                <dt className="text-xs font-semibold uppercase tracking-widest text-white/70">
-                  Typical Recovery
-                </dt>
-                <dd className="mt-1 font-mono text-2xl font-bold text-white">
-                  98–99.2%
-                </dd>
-              </div>
-              <div className="transition-all duration-200 hover:scale-105">
-                <dt className="text-xs font-semibold uppercase tracking-widest text-white/70">
-                  Deployment
-                </dt>
-                <dd className="mt-1 font-mono text-2xl font-bold text-white">
-                  4–6 Weeks
-                </dd>
-              </div>
-            </dl>
-          </ScrollReveal>
-        </div>
-      </section>
+      <PageHero
+        crumbs={[{ label: "Home", href: "/" }, { label: "Industrial" }]}
+        title="High-Yield Industrial Desalination & RO Systems"
+        intro="Engineered to your feed water analysis and process demand — from 5,000 GPD single-line plants to 20,000+ GPD multi-stage systems for textile, pharma, and process manufacturing."
+      >
+        <dl className="grid max-w-3xl gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3">
+          {[
+            ["Capacity range", "5K – 20K+ GPD"],
+            ["Typical recovery", "98–99.2%"],
+            ["Deployment", "4–6 weeks"],
+          ].map(([label, value]) => (
+            <div key={label} className="bg-navy/80 p-5 backdrop-blur">
+              <dd className="text-2xl font-extrabold tabular-nums tracking-tight text-white">{value}</dd>
+              <dt className="mt-1 text-sm text-white/60">{label}</dt>
+            </div>
+          ))}
+        </dl>
+      </PageHero>
 
       <DynamicSpecAndQuote />
     </main>

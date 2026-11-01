@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { AlertIcon, CheckCircle } from "../../components/ui/Icons";
+import PageHero from "../../components/ui/PageHero";
 import ScrollReveal from "../../components/ui/ScrollReveal";
 
 export const metadata: Metadata = {
@@ -39,34 +41,16 @@ export default function DomesticPage() {
   return (
     <main>
       {/* Lifestyle Hero */}
-      <section className="bg-surface px-6 py-16 md:py-24">
-        <div className="mx-auto max-w-7xl text-center">
-          <ScrollReveal direction="up" delay={0.1}>
-            <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-              For your home
-            </p>
-          </ScrollReveal>
-          <ScrollReveal direction="up" delay={0.2}>
-            <h1 className="mx-auto mt-3 max-w-2xl text-3xl font-extrabold tracking-tight text-navy sm:text-5xl md:text-6xl">
-              Water your family can drink without a second thought.
-            </h1>
-          </ScrollReveal>
-          <ScrollReveal direction="up" delay={0.3}>
-            <p className="mx-auto mt-4 max-w-xl text-base text-navy/60 sm:text-lg">
-              Clean, safe, great-tasting water for your kids, your kitchen, and
-              your peace of mind — installed in a few hours.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal direction="up" delay={0.4}>
-            <a
-              href="#get-quote"
-              className="mt-8 inline-flex min-h-12 items-center justify-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-8 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
-            >
-              Get My Home Installed
-            </a>
-          </ScrollReveal>
-        </div>
-      </section>
+      <PageHero
+        crumbs={[{ label: "Home", href: "/" }, { label: "Home RO systems" }]}
+        title="Water your family can drink without a second thought."
+        intro="Clean, safe, great-tasting water for your kids, your kitchen, and your peace of mind — installed in a few hours."
+        actions={
+          <a href="#get-quote" className="btn-shimmer inline-flex min-h-12 items-center justify-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-8 text-sm font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
+            Get My Home Installed
+          </a>
+        }
+      />
 
       {/* Problem vs Solution */}
       <section className="bg-white px-6 py-16 md:py-24">
@@ -85,11 +69,11 @@ export default function DomesticPage() {
                   className="grid gap-3 rounded-2xl border border-navy/10 transition-all duration-200 hover:border-primary/30 hover:shadow-card sm:grid-cols-2"
                 >
                   <div className="flex items-center gap-3 p-6">
-                    <span aria-hidden className="text-lg">😕</span>
+                    <span aria-hidden className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-600"><AlertIcon className="h-5 w-5" /></span>
                     <p className="text-sm text-navy/70">{row.problem}</p>
                   </div>
                   <div className="flex items-center gap-3 border-t border-navy/10 bg-surface p-6 sm:border-l sm:border-t-0">
-                    <span aria-hidden className="text-lg">✅</span>
+                    <span aria-hidden className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary"><CheckCircle className="h-5 w-5" /></span>
                     <p className="text-sm font-medium text-navy">{row.solution}</p>
                   </div>
                 </div>

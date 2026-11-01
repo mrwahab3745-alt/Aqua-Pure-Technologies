@@ -1,4 +1,5 @@
 import ScrollReveal from "../ui/ScrollReveal";
+import { SITE, whatsappUrl } from "../../../lib/site";
 
 export default function FinalCTA() {
   return (
@@ -19,13 +20,13 @@ export default function FinalCTA() {
         <ScrollReveal direction="up" delay={0.3}>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="https://wa.me/92XXXXXXXXXX"
-              className="flex min-h-12 w-full items-center justify-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-6 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30 sm:w-auto"
+              href={whatsappUrl()}
+              className="btn-shimmer flex min-h-12 w-full items-center justify-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-6 text-sm font-bold text-white shadow-sm transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30 sm:w-auto"
             >
               Initiate WhatsApp Consultation
             </a>
             <a
-              href="tel:+92XXXXXXXXXX"
+              href={`tel:${SITE.phones[0].tel}`}
               className="flex min-h-12 w-full items-center justify-center rounded-lg border border-white/30 px-6 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:border-primary hover:bg-primary/10 hover:shadow-lg sm:w-auto"
             >
               Call Technical Helpdesk
