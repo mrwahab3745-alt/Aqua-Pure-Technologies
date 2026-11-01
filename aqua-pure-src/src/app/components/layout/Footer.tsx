@@ -5,12 +5,10 @@ const PRODUCT_LINKS = [
   { href: "/products/commercial", label: "Commercial RO Plants" },
   { href: "/products/industrial", label: "Industrial RO Plants" },
   { href: "/products/spare-parts", label: "Spare Parts Catalog" },
-  { href: "/services/amc", label: "AMC / Maintenance" },
+  { href: "/services#amc", label: "AMC / Maintenance" },
 ];
 
-// Only list cities with genuine, verifiable service capability — see
-// Master Project Document, Locked Decision #8. Placeholder hrefs below
-// assume /service-areas/[city] pages exist before these go live.
+// Only list cities with genuine, verifiable service capability.
 const REGIONAL_HUBS = [
   { href: "/service-areas/lahore", label: "Lahore" },
   { href: "/service-areas/karachi", label: "Karachi" },

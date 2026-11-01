@@ -109,7 +109,7 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl space-y-16 md:space-y-24">
           {SERVICES.map((s, i) => (
             <ScrollReveal key={s.id} direction="up">
-              <article id={s.id} className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
+              <article id={s.id} className="grid scroll-mt-28 items-center gap-8 lg:grid-cols-2 lg:gap-16">
                 <div className={`relative aspect-[16/11] overflow-hidden rounded-3xl bg-gradient-to-br from-navy to-[#0a1226] p-6 shadow-xl shadow-navy/20 ${i % 2 ? "lg:order-2" : ""}`}>
                   <div aria-hidden className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/25 blur-2xl" />
                   {s.art}
