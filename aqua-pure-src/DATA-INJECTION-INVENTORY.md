@@ -56,7 +56,7 @@ Currently 6 sample parts across 4 categories. This is the item explicitly waitin
 
 ## 8. Regional/Service Area Links
 **File:** `app/components/layout/Footer.tsx` — `REGIONAL_HUBS` array
-Currently links to `/service-areas/lahore`, `/karachi`, `/islamabad` — these pages don't exist yet (correctly out of scope for this freeze). Only keep cities in this list where there's genuine service capability — see Master Project Document, Locked Decision #8.
+Currently links to `/service-areas/lahore` and `/karachi`, the two offices. Only keep cities in this list where there's genuine service capability — see Master Project Document, Locked Decision #8.
 
 ---
 

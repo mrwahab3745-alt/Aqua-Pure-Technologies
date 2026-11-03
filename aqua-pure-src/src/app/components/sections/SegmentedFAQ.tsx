@@ -2,9 +2,10 @@
 
 import { useState, useCallback } from "react";
 import ScrollReveal from "../ui/ScrollReveal";
+import { GENERAL_FAQS } from "../../../lib/content";
 
 type FaqItem = { id: string; question: string; answer: string };
-type TabKey = "domestic" | "industrial";
+type TabKey = "general" | "domestic" | "industrial";
 
 const DOMESTIC_FAQS: FaqItem[] = [
   {
@@ -23,13 +24,13 @@ const DOMESTIC_FAQS: FaqItem[] = [
     id: "dq3",
     question: "How long does home installation take?",
     answer:
-      "Most residential installations are completed within 2–3 hours by a certified technician, including a water quality test before and after.",
+      "Installation time depends on the system and your site, and we confirm it during the visit. We check your water first and test the system after installation.",
   },
   {
     id: "dq4",
     question: "What warranty comes with a domestic RO system?",
     answer:
-      "Standard systems carry a manufacturer warranty on the membrane and pump; exact terms are confirmed at the time of quotation.",
+      "Our plants come with a 1-year warranty; exact terms are confirmed in your quotation.",
   },
 ];
 
@@ -44,13 +45,13 @@ const INDUSTRIAL_FAQS: FaqItem[] = [
     id: "iq2",
     question: "Do you provide water quality compliance documentation?",
     answer:
-      "We provide lab test reports and system specification sheets suitable for internal compliance and audit documentation.",
+      "All documentation is provided with your installation, and we start with a free water test and consultation.",
   },
   {
     id: "iq3",
     question: "What is your emergency response time for industrial breakdowns?",
     answer:
-      "AMC clients receive priority response per their contract's SLA tier; response commitments are confirmed in the AMC agreement.",
+      "We offer 24/7 service: call or WhatsApp us. Response terms for AMC clients are agreed in the contract.",
   },
   {
     id: "iq4",
@@ -103,10 +104,11 @@ function AccordionItem({
 }
 
 export default function SegmentedFAQ() {
-  const [activeTab, setActiveTab] = useState<TabKey>("domestic");
+  const [activeTab, setActiveTab] = useState<TabKey>("general");
   const [openFaqId, setOpenFaqId] = useState<string | null>(null);
 
-  const visibleFaqs = activeTab === "domestic" ? DOMESTIC_FAQS : INDUSTRIAL_FAQS;
+  const visibleFaqs: readonly FaqItem[] =
+    activeTab === "general" ? GENERAL_FAQS : activeTab === "domestic" ? DOMESTIC_FAQS : INDUSTRIAL_FAQS;
 
   const handleTabChange = useCallback((tab: TabKey) => {
     setActiveTab(tab);
@@ -127,34 +129,32 @@ export default function SegmentedFAQ() {
         </ScrollReveal>
         <ScrollReveal direction="up" delay={0.2}>
           <h2 className="mt-2 text-3xl font-extrabold text-navy sm:text-4xl">
-            Answers, by audience.
+            Common answers, by audience.
           </h2>
         </ScrollReveal>
 
         <ScrollReveal direction="up" delay={0.3}>
-          <div className="mt-8 flex gap-2 border-b border-navy/10">
-            <button
-              type="button"
-              onClick={() => handleTabChange("domestic")}
-              className={`cursor-pointer border-b-2 px-4 py-3 text-sm font-semibold transition-all duration-300 ease-in-out ${
-                activeTab === "domestic"
-                  ? "border-primary text-navy"
-                  : "border-transparent text-navy/40"
-              }`}
-            >
-              Domestic Safety FAQs
-            </button>
-            <button
-              type="button"
-              onClick={() => handleTabChange("industrial")}
-              className={`cursor-pointer border-b-2 px-4 py-3 text-sm font-semibold transition-all duration-300 ease-in-out ${
-                activeTab === "industrial"
-                  ? "border-primary text-navy"
-                  : "border-transparent text-navy/40"
-              }`}
-            >
-              Industrial Compliance FAQs
-            </button>
+          <div className="mt-8 flex gap-2 overflow-x-auto border-b border-navy/10" role="tablist">
+            {(
+              [
+                ["general", "General"],
+                ["domestic", "Domestic"],
+                ["industrial", "Industrial"],
+              ] as const
+            ).map(([key, label]) => (
+              <button
+                key={key}
+                type="button"
+                role="tab"
+                aria-selected={activeTab === key}
+                onClick={() => handleTabChange(key)}
+                className={`cursor-pointer whitespace-nowrap border-b-2 px-4 py-3 text-sm font-semibold transition-all duration-300 ease-in-out ${
+                  activeTab === key ? "border-primary text-navy" : "border-transparent text-navy/40"
+                }`}
+              >
+                {label}
+              </button>
+            ))}
           </div>
         </ScrollReveal>
 

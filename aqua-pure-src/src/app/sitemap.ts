@@ -4,7 +4,7 @@ import { SITE_URL } from "../lib/site";
 const PATHS = [
   "", "/about", "/services", "/contact",
   "/products/domestic", "/products/commercial", "/products/industrial", "/products/spare-parts",
-  "/service-areas/lahore", "/service-areas/karachi", "/service-areas/islamabad",
+  "/service-areas/lahore", "/service-areas/karachi",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

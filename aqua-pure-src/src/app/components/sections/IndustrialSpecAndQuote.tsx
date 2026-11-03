@@ -4,102 +4,51 @@ import FormRedirect from "../ui/FormRedirect";
 import ScrollReveal from "../ui/ScrollReveal";
 import { FORM_ACCESS_KEY } from "../../../lib/site";
 
-const PLANT_MODELS = [
-  {
-    model: "APT-5K",
-    gpd: "5,000 GPD",
-    tdsLimit: "≤ 2,000 ppm",
-    pumpHp: "3 HP",
-    vessels: "2× FRP, 4040 series",
-  },
-  {
-    model: "APT-10K",
-    gpd: "10,000 GPD",
-    tdsLimit: "≤ 3,500 ppm",
-    pumpHp: "5 HP",
-    vessels: "4× FRP, 4040 series",
-  },
-  {
-    model: "APT-20K",
-    gpd: "20,000 GPD",
-    tdsLimit: "≤ 5,000 ppm",
-    pumpHp: "10 HP",
-    vessels: "6× SS, 8040 series",
-  },
+const DESIGN_STEPS = [
+  { title: "Analyze your water", text: "We analyze the input water and check its TDS level before recommending anything." },
+  { title: "Calculate your daily demand", text: "Your daily water requirement decides the size of the plant, so we work it out with you first." },
+  { title: "Design a customized plant", text: "Customized RO plants for small factories and workshops, for drinking water and process water needs." },
+  { title: "Install and commission", text: "Complete setup with proper flow rate, pressure balance and filtration efficiency, then commissioning." },
 ];
 
 export default function IndustrialSpecAndQuote() {
   return (
     <>
-      {/* Technical Specification Matrix */}
+      {/* How we design an industrial plant */}
       <section className="bg-white px-6 py-16 md:py-24">
         <div className="mx-auto max-w-7xl">
           <ScrollReveal direction="up" delay={0.1}>
             <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-              Model comparison
+              Our process
             </p>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={0.2}>
             <h2 className="mt-2 text-3xl font-extrabold text-navy sm:text-4xl">
-              Three baseline configurations. Every plant is still built to spec.
+              How we design an industrial plant.
             </h2>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={0.3}>
             <p className="mt-3 max-w-2xl text-sm text-navy/60">
-              These are starting configurations, not fixed products — final
-              specification is set after reviewing your feed water report.
+              Every plant is built to your water and your demand. Our systems can treat sea
+              water, borewell water, contaminated factory water and waste water.
             </p>
           </ScrollReveal>
 
-          <ScrollReveal direction="up" delay={0.4}>
-            <div className="mt-10 overflow-x-auto rounded-2xl border border-navy/10">
-              <table className="w-full min-w-[640px] border-collapse text-left">
-                <thead>
-                  <tr className="border-b border-navy/10 bg-surface">
-                    <th className="px-6 py-4 text-xs font-semibold uppercase tracking-widest text-navy/80">
-                      Model
-                    </th>
-                    <th className="px-6 py-4 text-xs font-semibold uppercase tracking-widest text-navy/80">
-                      GPD Capacity
-                    </th>
-                    <th className="px-6 py-4 text-xs font-semibold uppercase tracking-widest text-navy/80">
-                      Feed Water TDS Limit
-                    </th>
-                    <th className="px-6 py-4 text-xs font-semibold uppercase tracking-widest text-navy/80">
-                      Pump Horsepower
-                    </th>
-                    <th className="px-6 py-4 text-xs font-semibold uppercase tracking-widest text-navy/80">
-                      Vessel Configuration
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {PLANT_MODELS.map((plant, i) => (
-                    <tr
-                      key={plant.model}
-                      className={`transition-all duration-200 hover:bg-primary/5 hover:scale-[1.01] ${i !== PLANT_MODELS.length - 1 ? "border-b border-navy/10" : ""}`}
-                    >
-                      <td className="px-6 py-4 font-mono text-sm font-bold text-navy">
-                        {plant.model}
-                      </td>
-                      <td className="px-6 py-4 font-mono text-sm text-navy/80">
-                        {plant.gpd}
-                      </td>
-                      <td className="px-6 py-4 font-mono text-sm text-navy/80">
-                        {plant.tdsLimit}
-                      </td>
-                      <td className="px-6 py-4 font-mono text-sm text-navy/80">
-                        {plant.pumpHp}
-                      </td>
-                      <td className="px-6 py-4 font-mono text-sm text-navy/80">
-                        {plant.vessels}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </ScrollReveal>
+          <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {DESIGN_STEPS.map((step, i) => (
+              <li key={step.title}>
+                <ScrollReveal direction="up" delay={0.08 * i} className="h-full">
+                  <div className="h-full rounded-2xl border border-navy/10 bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:bg-white hover:shadow-card-hover">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-sm font-extrabold text-primary">
+                      {i + 1}
+                    </span>
+                    <h3 className="mt-4 text-base font-bold text-navy">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-navy/60">{step.text}</p>
+                  </div>
+                </ScrollReveal>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

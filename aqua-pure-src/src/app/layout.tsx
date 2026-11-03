@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SITE, SITE_URL } from "../lib/site";
+import TickerBar from "./components/ui/TickerBar";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import dynamic from "next/dynamic";
 import Navbar from "./components/layout/Navbar";
@@ -28,13 +29,13 @@ const localBusiness = {
   url: SITE_URL,
   telephone: SITE.phones.map((p) => p.tel),
   email: SITE.email,
-  address: {
+  address: SITE.offices.map((o) => ({
     "@type": "PostalAddress",
-    streetAddress: "S-86-R 89, Near Ichhara Shopping Center, Feroz Pur Road",
-    addressLocality: "Lahore",
+    streetAddress: o.lines.slice(0, -1).join(", "),
+    addressLocality: o.city,
     addressCountry: "PK",
-  },
-  areaServed: ["Lahore", "Karachi", "Islamabad"],
+  })),
+  areaServed: SITE.offices.map((o) => o.city),
 };
 // "<" is escaped so the JSON can never close the script tag.
 const localBusinessJson = JSON.stringify(localBusiness).replace(/</g, "\\u003c");
@@ -73,6 +74,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: localBusinessJson }} />
+        <TickerBar />
         <Navbar />
         {children}
         <Footer />

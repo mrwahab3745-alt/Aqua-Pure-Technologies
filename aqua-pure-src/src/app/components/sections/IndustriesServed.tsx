@@ -7,15 +7,15 @@ const INDUSTRIES = [
   },
   {
     name: "Pharmaceuticals",
-    painPoint: "USP Purified Water compliance for manufacturing and QC processes.",
+    painPoint: "Consistent purified water for manufacturing and quality-control processes.",
   },
   {
     name: "Commercial Hospitality",
     painPoint: "Reliable, high-volume supply for kitchens, laundry, and guest-facing service.",
   },
   {
-    name: "Poultry & Agriculture",
-    painPoint: "Micro-biological and TDS management for livestock and processing water.",
+    name: "Schools, Colleges & Hospitals",
+    painPoint: "Safe, clean drinking water for students, patients and staff every day.",
   },
 ];
 

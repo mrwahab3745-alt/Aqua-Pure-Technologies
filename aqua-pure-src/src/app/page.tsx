@@ -1,7 +1,8 @@
 import ScrollProgress from "./components/ui/ScrollProgress";
 import dynamic from "next/dynamic";
 import HeroRouter from "./components/sections/HeroRouter";
-import TrustIndicators from "./components/sections/TrustIndicators";
+import StatsBand from "./components/sections/StatsBand";
+import Testimonials from "./components/sections/Testimonials";
 import ROProcessStepper from "./components/sections/ROProcessStepper";
 import ProductCategoriesHub from "./components/sections/ProductCategoriesHub";
 // import CaseStudies from "./components/sections/CaseStudies";
@@ -20,7 +21,7 @@ export default function HomePage() {
     <main>
       <ScrollProgress />
       <HeroRouter />
-      <TrustIndicators />
+      <StatsBand />
       <PurityCompare />
       <ProductCategoriesHub />
       <ROProcessStepper />
@@ -28,6 +29,7 @@ export default function HomePage() {
       <SavingsEstimator />
       <IndustriesServed />
       <AMCPanel />
+      <Testimonials />
       <DynamicSegmentedFAQ />
       <FinalCTA />
     </main>

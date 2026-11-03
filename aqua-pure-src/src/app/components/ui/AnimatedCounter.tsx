@@ -11,10 +11,12 @@ export default function AnimatedCounter({
   value,
   suffix = "",
   duration = 1.6,
+  decimals = 0,
 }: {
   value: number;
   suffix?: string;
   duration?: number;
+  decimals?: number;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
@@ -30,14 +32,14 @@ export default function AnimatedCounter({
     const controls = animate(0, value, {
       duration,
       ease: "easeOut",
-      onUpdate: (v) => setDisplay(Math.round(v)),
+      onUpdate: (v) => setDisplay(Math.round(v * 10 ** decimals) / 10 ** decimals),
     });
     return () => controls.stop();
-  }, [inView, value, duration, reduceMotion]);
+  }, [inView, value, duration, reduceMotion, decimals]);
 
   return (
     <span ref={ref}>
-      {display.toLocaleString("en-US")}
+      {display.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}
       {suffix}
     </span>
   );

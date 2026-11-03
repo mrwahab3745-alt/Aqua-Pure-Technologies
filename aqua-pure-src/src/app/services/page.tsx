@@ -4,6 +4,7 @@ import ScrollReveal from "../components/ui/ScrollReveal";
 import PageHero from "../components/ui/PageHero";
 import { MembraneVisual } from "../components/ui/PageVisual";
 import CTABand from "../components/ui/CTABand";
+import ProductsGrid from "../components/sections/ProductsGrid";
 
 export const metadata: Metadata = {
   title: "Services — Engineering, Maintenance & AMC",
@@ -85,10 +86,10 @@ const SERVICES = [
   },
   {
     id: "amc",
-    title: "Turnkey AMC engineering controls",
+    title: "Annual Maintenance Contract (AMC)",
     description:
-      "Preventative and emergency maintenance under one contract — response SLAs, genuine parts, and scheduled system health checks.",
-    points: ["Response times written into the contract", "Genuine OEM parts only", "Scheduled system health checks"],
+      "Preventative maintenance, filter and membrane servicing, and breakdown support under one contract, with 24/7 service available.",
+    points: ["Scheduled maintenance and filter replacement", "Spare parts supplied when needed", "24/7 service available"],
     cta: "Get an AMC quote",
     href: "/contact?intent=amc",
     art: <Shield />,
@@ -139,6 +140,8 @@ export default function ServicesPage() {
           ))}
         </div>
       </section>
+
+      <ProductsGrid />
 
       <div className="pt-8 md:pt-16">
         <CTABand />

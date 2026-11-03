@@ -7,13 +7,13 @@ export default function FinalCTA() {
       <div className="mx-auto max-w-3xl text-center">
         <ScrollReveal direction="up" delay={0.1}>
           <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
-            Engineered for Zero Downtime. Talk Directly to Our Design Engineers.
+            Ready to Get Clean & Safe Water?
           </h2>
         </ScrollReveal>
         <ScrollReveal direction="up" delay={0.2}>
           <p className="mt-4 text-sm text-white/60 sm:text-base">
-            No sales scripts — just a straight conversation about your water,
-            your capacity needs, and what it&apos;ll take to get it right.
+            Get a fully installed RO plant tailored to your water. Talk to our
+            team for a free water test and system consultation.
           </p>
         </ScrollReveal>
 

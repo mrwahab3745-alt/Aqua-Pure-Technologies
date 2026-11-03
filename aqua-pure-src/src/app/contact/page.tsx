@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import FormRedirect from "../components/ui/FormRedirect";
 import ScrollReveal from "../components/ui/ScrollReveal";
 import PageHero from "../components/ui/PageHero";
-import { FORM_ACCESS_KEY, SITE, mapsUrl, whatsappUrl } from "../../lib/site";
+import { FORM_ACCESS_KEY, SITE, mapsUrlFor, whatsappUrl } from "../../lib/site";
 import { RippleVisual } from "../components/ui/PageVisual";
 
 export const metadata: Metadata = {
@@ -84,28 +84,30 @@ export default function ContactPage() {
                 <span>
                   <span className="block text-sm text-navy/55">Working hours</span>
                   <span className="mt-1 block text-sm leading-relaxed text-navy/80">
-                    Mon–Sat, 9:00 AM – 7:00 PM
+                    {SITE.hours.days}, {SITE.hours.time}
                     <br />
-                    AMC clients: 24/7 emergency response
+                    {SITE.hours.note}
                   </span>
                 </span>
               </li>
-              <li className="flex items-start gap-4 rounded-2xl border border-navy/10 p-5">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-surface">
-                  <svg {...svgProps} className={ic}><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z" /><circle cx="12" cy="10" r="2.500" /></svg>
-                </span>
-                <span>
-                  <span className="block text-sm text-navy/55">Find us</span>
-                  <address className="mt-1 not-italic text-sm leading-relaxed text-navy/80">
-                    {SITE.address.lines.map((line) => (
-                      <span key={line} className="block">{line}</span>
-                    ))}
-                  </address>
-                  <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-sm font-semibold text-primary hover:underline">
-                    View on Google Maps
-                  </a>
-                </span>
-              </li>
+              {SITE.offices.map((o) => (
+                <li key={o.slug} className="flex items-start gap-4 rounded-2xl border border-navy/10 p-5">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-surface">
+                    <svg {...svgProps} className={ic}><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z" /><circle cx="12" cy="10" r="2.500" /></svg>
+                  </span>
+                  <span>
+                    <span className="block text-sm text-navy/55">{o.city} office</span>
+                    <address className="mt-1 not-italic text-sm leading-relaxed text-navy/80">
+                      {o.lines.map((line) => (
+                        <span key={line} className="block">{line}</span>
+                      ))}
+                    </address>
+                    <a href={mapsUrlFor(o.full)} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-sm font-semibold text-primary hover:underline">
+                      View on Google Maps
+                    </a>
+                  </span>
+                </li>
+              ))}
             </ul>
           </ScrollReveal>
 
