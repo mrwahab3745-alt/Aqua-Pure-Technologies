@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import PageHero from "../../components/ui/PageHero";
+import FormRedirect from "../../components/ui/FormRedirect";
 import ScrollReveal from "../../components/ui/ScrollReveal";
+import { FORM_ACCESS_KEY } from "../../../lib/site";
 
 // NOTE: Core Metrics Grid below uses placeholder values pending
 // confirmation from Wahab — see Master Project Document, Open Items.
@@ -9,32 +11,32 @@ import ScrollReveal from "../../components/ui/ScrollReveal";
 export const metadata: Metadata = {
   title: "Commercial RO Plants — Offices, Schools, Clinics & Hospitality",
   description:
-    "Reliable RO water systems for offices, schools, malls, and clinics. Scaled to your headcount, low running cost, AMC support included.",
+    "Reliable RO water systems for hotels, hospitals, schools, offices and malls. Site survey, installation, maintenance and support from one team.",
 };
 
 const CORE_METRICS = [
-  { label: "Supply Capacity", value: "200–1,000 people" },
-  { label: "Daily Output", value: "1,000–5,000 GPD" },
-  { label: "Power Draw", value: "Low — standard 3-phase" },
-  { label: "Install Time", value: "1–2 Days" },
+  { label: "Applications", value: "Hotels, hospitals, schools" },
+  { label: "Also suited to", value: "Offices, malls, restaurants" },
+  { label: "We handle", value: "Survey, design, installation" },
+  { label: "Support", value: "24/7 service available" },
 ];
 
 const TRUST_ITEMS = [
   {
-    title: "Compliance Documentation",
-    description: "Water quality test reports provided for internal compliance and audit records.",
+    title: "Water analysis first",
+    description: "Site survey and water analysis come before the system is designed.",
   },
   {
-    title: "Workplace AMC Coverage",
-    description: "Scheduled maintenance visits with priority response — no disruption to daily operations.",
+    title: "Maintenance and servicing",
+    description: "Ongoing maintenance, membrane replacement and filter servicing.",
   },
   {
-    title: "Genuine OEM Components",
-    description: "Membranes and pumps from manufacturers we're authorized to install and service.",
+    title: "Documentation provided",
+    description: "Documents are handed over with your installation.",
   },
   {
-    title: "Single Point of Contact",
-    description: "One account manager for installation, service requests, and AMC renewals.",
+    title: "Direct support",
+    description: "Call or WhatsApp the team any time. 24/7 service is available.",
   },
 ];
 
@@ -45,7 +47,7 @@ export default function CommercialPage() {
       <PageHero
         crumbs={[{ label: "Home", href: "/" }, { label: "Commercial" }]}
         title="Reliable water supply for offices, schools, and clinics — without the operational headache."
-        intro="Scaled to your headcount, backed by an AMC that keeps things running so your team never has to think about it."
+        intro="Designed around your site and your water, with maintenance and support from the same team."
         actions={
           <a href="#get-quote" className="btn-shimmer inline-flex min-h-12 items-center justify-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-8 text-sm font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
             Request a Site Assessment
@@ -58,12 +60,12 @@ export default function CommercialPage() {
         <div className="mx-auto max-w-7xl">
           <ScrollReveal direction="up" delay={0.1}>
             <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-              Built for your scale
+              Where it fits
             </p>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={0.2}>
             <h2 className="mt-2 text-3xl font-extrabold text-navy sm:text-4xl">
-              Sized to your headcount, not oversold.
+              Built around your site and your water.
             </h2>
           </ScrollReveal>
 
@@ -87,12 +89,12 @@ export default function CommercialPage() {
         <div className="mx-auto max-w-7xl">
           <ScrollReveal direction="up" delay={0.1}>
             <p className="text-xs font-semibold uppercase tracking-widest text-primary">
-              Why facility managers choose us
+              Why teams choose us
             </p>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={0.2}>
             <h2 className="mt-2 text-3xl font-extrabold text-navy sm:text-4xl">
-              Compliance and continuity, handled.
+              Planned, installed and supported by one team.
             </h2>
           </ScrollReveal>
 
@@ -133,7 +135,10 @@ export default function CommercialPage() {
               method="POST"
               className="rounded-2xl bg-white/5 p-6 sm:p-8"
             >
-              <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+              <input type="hidden" name="access_key" value={FORM_ACCESS_KEY} />
+              {/* spam trap: bots tick it, humans never see it (Web3Forms drops these) */}
+              <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
+              <FormRedirect />
               <input type="hidden" name="subject" value="Commercial RO — New Quote Request" />
 
               <div className="grid gap-4">

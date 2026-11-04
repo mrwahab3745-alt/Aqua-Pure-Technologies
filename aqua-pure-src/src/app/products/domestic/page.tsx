@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { AlertIcon, CheckCircle } from "../../components/ui/Icons";
 import PageHero from "../../components/ui/PageHero";
+import FormRedirect from "../../components/ui/FormRedirect";
 import ScrollReveal from "../../components/ui/ScrollReveal";
+import { FORM_ACCESS_KEY } from "../../../lib/site";
 
 export const metadata: Metadata = {
   title: "Home RO Water Filters — Safe, Great-Tasting Water for Your Family",
   description:
-    "RO water systems for your home. Safe drinking water for your children, no more bad taste or smell, fast installation across Pakistan.",
+    "RO water systems for your home. Safe drinking water for your family, no more bad taste or smell, professional installation across Pakistan.",
 };
 
 const PROBLEMS_SOLVED = [
@@ -29,12 +31,12 @@ const PROBLEMS_SOLVED = [
 ];
 
 const HOUSEHOLD_CHECKLIST = [
-  "100% safe drinking water for children",
-  "Removes limescale and water hardness",
-  "No more bad taste or smell",
-  "Fits under your existing kitchen counter",
-  "Auto filter-change reminders included",
-  "Installed and tested same day",
+  "Site inspection and system selection",
+  "Professional fitting and final testing",
+  "Designed for local water conditions",
+  "After-sales support",
+  "Regular maintenance and filter replacement",
+  "Suitable for houses, apartments and small offices",
 ];
 
 export default function DomesticPage() {
@@ -44,7 +46,7 @@ export default function DomesticPage() {
       <PageHero
         crumbs={[{ label: "Home", href: "/" }, { label: "Home RO systems" }]}
         title="Water your family can drink without a second thought."
-        intro="Clean, safe, great-tasting water for your kids, your kitchen, and your peace of mind — installed in a few hours."
+        intro="Clean, safe, great-tasting water for your kids, your kitchen, and your peace of mind — installed by our team."
         actions={
           <a href="#get-quote" className="btn-shimmer inline-flex min-h-12 items-center justify-center rounded-lg bg-gradient-to-r from-primary to-blue-600 px-8 text-sm font-bold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30">
             Get My Home Installed
@@ -123,13 +125,12 @@ export default function DomesticPage() {
         <div className="mx-auto max-w-xl text-center">
           <ScrollReveal direction="up" delay={0.1}>
             <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
-              Get installed this week.
+              Get your home RO plant installed.
             </h2>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={0.2}>
             <p className="mt-3 text-sm text-white/60">
-              Tell us your area and we&apos;ll confirm installation timing —
-              most homes are set up within 2–3 hours, same or next day.
+              Tell us your area and we&apos;ll confirm installation timing.
             </p>
           </ScrollReveal>
 
@@ -139,7 +140,10 @@ export default function DomesticPage() {
               method="POST"
               className="mt-8 grid gap-4 rounded-2xl bg-white/5 p-6 text-left sm:p-8"
             >
-              <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+              <input type="hidden" name="access_key" value={FORM_ACCESS_KEY} />
+              {/* spam trap: bots tick it, humans never see it (Web3Forms drops these) */}
+              <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
+              <FormRedirect />
               <input type="hidden" name="subject" value="Domestic RO — New Installation Request" />
 
               <div>

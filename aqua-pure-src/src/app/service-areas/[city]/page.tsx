@@ -5,18 +5,18 @@ import PageHero from "../../components/ui/PageHero";
 import ScrollReveal from "../../components/ui/ScrollReveal";
 import CTABand from "../../components/ui/CTABand";
 import { ArrowRight } from "../../components/ui/Icons";
+import { SITE, mapsUrlFor } from "../../../lib/site";
 
 const CITIES: Record<string, string> = {
   lahore: "Lahore",
   karachi: "Karachi",
-  islamabad: "Islamabad",
 };
 
 const OFFERINGS = [
   { href: "/products/domestic", title: "Domestic RO plants", text: "Point-of-use and whole-house systems for clean drinking water at home." },
   { href: "/products/commercial", title: "Commercial RO plants", text: "Offices, schools, clinics and hospitality, with AMC support." },
   { href: "/products/industrial", title: "Industrial RO plants", text: "Process water at scale, engineered to your feed water analysis." },
-  { href: "/products/spare-parts", title: "Genuine spare parts", text: "Membranes, vessels, pumps and dosing systems. Check stock and request a quote." },
+  { href: "/products/spare-parts", title: "Spare parts", text: "Membranes, vessels, pumps and dosing systems. Check stock and request a quote." },
   { href: "/services#amc", title: "AMC and maintenance", text: "Preventative and emergency maintenance under one contract." },
 ];
 
@@ -37,7 +37,7 @@ export async function generateMetadata({
 
   return {
     title: `RO Plant Services in ${name}`,
-    description: `RO plant installation, maintenance, AMC and genuine spare parts for homes, businesses and industry in ${name}. Talk to an Aqua Pure engineer.`,
+    description: `RO plant installation, maintenance, AMC and spare parts for homes, businesses and industry in ${name}. Talk to an Aqua Pure engineer.`,
   };
 }
 
@@ -49,6 +49,7 @@ export default async function ServiceAreaPage({
   const { city } = await params;
   const name = CITIES[city];
   if (!name) notFound();
+  const office = SITE.offices.find((o) => o.slug === city);
 
   return (
     <main>
@@ -59,7 +60,7 @@ export default async function ServiceAreaPage({
           { label: name },
         ]}
         title={`RO plant services in ${name}.`}
-        intro={`Domestic, commercial and industrial RO plants, maintenance and genuine spare parts for customers in ${name}.`}
+        intro={`Domestic, commercial and industrial RO plants, maintenance and spare parts for customers in ${name}.`}
       />
 
       <section className="bg-white px-6 pb-16 pt-4 md:pb-24">
@@ -100,6 +101,32 @@ export default async function ServiceAreaPage({
           </ul>
         </div>
       </section>
+
+      {office && (
+        <section className="bg-surface px-6 py-12">
+          <div className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 className="text-lg font-bold text-navy">Our {name} office</h2>
+              <address className="mt-2 not-italic text-sm leading-relaxed text-navy/70">
+                {office.lines.map((line) => (
+                  <span key={line} className="block">{line}</span>
+                ))}
+              </address>
+              <p className="mt-2 text-sm text-navy/70">
+                {SITE.hours.days}, {SITE.hours.time} · {SITE.hours.note}
+              </p>
+            </div>
+            <a
+              href={mapsUrlFor(office.full)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-12 items-center justify-center rounded-lg border border-navy/15 px-6 text-sm font-bold text-navy transition-colors hover:border-primary hover:text-primary"
+            >
+              View on Google Maps
+            </a>
+          </div>
+        </section>
+      )}
 
       <CTABand
         title={`Tell us about your site in ${name}.`}

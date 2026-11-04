@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import FormRedirect from "../components/ui/FormRedirect";
 import ScrollReveal from "../components/ui/ScrollReveal";
 import PageHero from "../components/ui/PageHero";
-import { SITE, mapsUrl, whatsappUrl } from "../../lib/site";
+import { FORM_ACCESS_KEY, SITE, mapsUrlFor, whatsappUrl } from "../../lib/site";
 import { RippleVisual } from "../components/ui/PageVisual";
 
 export const metadata: Metadata = {
@@ -83,28 +84,30 @@ export default function ContactPage() {
                 <span>
                   <span className="block text-sm text-navy/55">Working hours</span>
                   <span className="mt-1 block text-sm leading-relaxed text-navy/80">
-                    Mon–Sat, 9:00 AM – 7:00 PM
+                    {SITE.hours.days}, {SITE.hours.time}
                     <br />
-                    AMC clients: 24/7 emergency response
+                    {SITE.hours.note}
                   </span>
                 </span>
               </li>
-              <li className="flex items-start gap-4 rounded-2xl border border-navy/10 p-5">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-surface">
-                  <svg {...svgProps} className={ic}><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z" /><circle cx="12" cy="10" r="2.500" /></svg>
-                </span>
-                <span>
-                  <span className="block text-sm text-navy/55">Find us</span>
-                  <address className="mt-1 not-italic text-sm leading-relaxed text-navy/80">
-                    {SITE.address.lines.map((line) => (
-                      <span key={line} className="block">{line}</span>
-                    ))}
-                  </address>
-                  <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-sm font-semibold text-primary hover:underline">
-                    View on Google Maps
-                  </a>
-                </span>
-              </li>
+              {SITE.offices.map((o) => (
+                <li key={o.slug} className="flex items-start gap-4 rounded-2xl border border-navy/10 p-5">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-surface">
+                    <svg {...svgProps} className={ic}><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z" /><circle cx="12" cy="10" r="2.500" /></svg>
+                  </span>
+                  <span>
+                    <span className="block text-sm text-navy/55">{o.city} office</span>
+                    <address className="mt-1 not-italic text-sm leading-relaxed text-navy/80">
+                      {o.lines.map((line) => (
+                        <span key={line} className="block">{line}</span>
+                      ))}
+                    </address>
+                    <a href={mapsUrlFor(o.full)} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-sm font-semibold text-primary hover:underline">
+                      View on Google Maps
+                    </a>
+                  </span>
+                </li>
+              ))}
             </ul>
           </ScrollReveal>
 
@@ -115,18 +118,20 @@ export default function ContactPage() {
               className="relative h-fit overflow-hidden rounded-3xl bg-gradient-to-br from-navy to-[#0a1226] p-6 shadow-xl shadow-navy/20 sm:p-10"
             >
               <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-primary/25 blur-3xl" />
-              <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+              <input type="hidden" name="access_key" value="408d86dd-efdd-4538-9bfa-ec0431606e02" /> 
+              <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
+              <FormRedirect />
               <input type="hidden" name="subject" value="Website Contact Form — New Message" />
 
               <h2 className="relative text-2xl font-extrabold tracking-tight text-white">Send us a message</h2>
               <div className="relative mt-6 grid gap-5">
                 <div>
                   <label htmlFor="name" className={label}>Full name</label>
-                  <input id="name" name="name" type="text" required className={field} placeholder="Your name" />
+                  <input id="name" name="name" type="text" required maxLength={80} autoComplete="name" className={field} placeholder="Your name" />
                 </div>
                 <div>
                   <label htmlFor="contact" className={label}>Phone or email</label>
-                  <input id="contact" name="contact" type="text" required className={field} placeholder="+92 or you@example.com" />
+                  <input id="contact" name="contact" type="text" required maxLength={120} autoComplete="email" pattern="^(\+?[0-9][0-9\s\-]{8,18}|[^\s@]+@[^\s@]+\.[^\s@]{2,})$" title="Enter a phone number (e.g. 0324-5500653) or an email address" className={field} placeholder="+92 or you@example.com" />
                 </div>
                 <div>
                   <label htmlFor="message" className={label}>Message</label>
@@ -135,6 +140,7 @@ export default function ContactPage() {
                     name="message"
                     rows={5}
                     required
+                    maxLength={2000}
                     className={`${field} py-3`}
                     placeholder="Tell us what you need — installation, maintenance, spare parts, or a quotation."
                   />

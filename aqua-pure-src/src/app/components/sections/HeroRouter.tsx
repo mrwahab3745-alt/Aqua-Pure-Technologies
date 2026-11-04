@@ -39,7 +39,7 @@ const CARDS: {
     eyebrow: "For your home",
     title: "Home RO Systems",
     description:
-      "Clean, safe drinking water for your household. Fast installation, transparent pricing.",
+      "Clean, safe drinking water for your household. Professional installation and after-sales support.",
     href: "/products/domestic",
   },
   {
@@ -47,7 +47,7 @@ const CARDS: {
     eyebrow: "For your business",
     title: "Business Solutions",
     description:
-      "RO plants, AMC, and support for offices, hospitals, and factories nationwide.",
+      "RO plants, AMC, and support for offices, schools, hospitals, and factories across Pakistan.",
   },
   {
     id: "parts",

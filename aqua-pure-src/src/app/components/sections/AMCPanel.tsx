@@ -5,10 +5,10 @@ import ScrollReveal from "../ui/ScrollReveal";
 import AccentBar from "../ui/AccentBar";
 
 const SLA_COMMITMENTS = [
-  "24/7 emergency breakdown response",
-  "Certified, factory-trained technicians",
-  "Genuine OEM replacement parts only",
-  "Response time guarantee per contract tier",
+  "24/7 service available",
+  "Free RO water test and consultation",
+  "Professional installation and after-sales support",
+  "Contract terms agreed for your plant",
 ];
 
 const COVERED_ITEMS = [
@@ -17,7 +17,7 @@ const COVERED_ITEMS = [
   "Pump health monitoring & servicing",
   "Filter & cartridge replacement scheduling",
   "Electrical panel inspection",
-  "Priority parts availability",
+  "Spare parts availability",
 ];
 
 export default function AMCPanel() {
@@ -47,7 +47,7 @@ export default function AMCPanel() {
           <div className="mt-10 grid gap-8 sm:grid-cols-2">
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-widest text-primary">
-                SLA Commitments
+                What you can expect
               </h3>
               <ul className="mt-4 space-y-3">
                 {SLA_COMMITMENTS.map((item, i) => (
