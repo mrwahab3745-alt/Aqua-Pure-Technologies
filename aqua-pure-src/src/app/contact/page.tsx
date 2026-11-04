@@ -118,8 +118,7 @@ export default function ContactPage() {
               className="relative h-fit overflow-hidden rounded-3xl bg-gradient-to-br from-navy to-[#0a1226] p-6 shadow-xl shadow-navy/20 sm:p-10"
             >
               <div aria-hidden className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 rounded-full bg-primary/25 blur-3xl" />
-              <input type="hidden" name="access_key" value={FORM_ACCESS_KEY} />
-              {/* spam trap: bots tick it, humans never see it (Web3Forms drops these) */}
+              <input type="hidden" name="access_key" value="408d86dd-efdd-4538-9bfa-ec0431606e02" /> 
               <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
               <FormRedirect />
               <input type="hidden" name="subject" value="Website Contact Form — New Message" />
